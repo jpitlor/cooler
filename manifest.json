@@ -1,0 +1,23 @@
+{
+	"name": "COOLer",
+	"description": "A COOL extension",
+	"version": "1.0",
+	"manifest_version": 2,
+	"content_scripts": [
+		{
+			"css": ["bootstrap.min.css", "theme.css"],
+			"js": ["jquery.min.js", "popper.min.js", "bootstrap.min.js", "theme.js"],
+			"matches": ["https://www.coolfaces.net/*"]
+		},
+		{
+			"css": ["browser-support.css"],
+			"js": ["browser-support.js"],
+			"matches": ["https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html"]
+		},
+		{
+			"css": ["home.css"],
+			"js": ["home.js"],
+			"matches": ["https://www.coolfaces.net/COOLPUWL/Individual/ShowIndividualPage.aspx"]
+		}
+	]
+}
