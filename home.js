@@ -21,10 +21,10 @@ function doStuff() {
 			<div class="collapse navbar-collapse" id="navbarText">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item active">
-						<a class="nav-link" href="#">Home</a>
+						<a class="nav-link" href="/COOLPUWL/Individual/ShowIndividualPage.aspx">Home</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Browser Support</a>
+						<a class="nav-link" href="/COOLPUWL/MyPages/Browsers.html">Browser Support</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" href="#">About</a>
