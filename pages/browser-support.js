@@ -47,27 +47,24 @@ function doStuff() {
 				support your browser.</p>
 			</div>
 	        
-	        <div id="browsers" class="row">
-				${browsers.map((v, i) => (`<div class="col">
-					<div class="card">
-						<div class="card-header">
-							<a data-toggle="collapse" href="#cooler-${v.name}-collapsible" 
-											 role="button" aria-expanded="false" 
-											 aria-controls="cooler-${v.name}-collapsible"
-											 data-parent="#browsers">
-								<img src="${v.img}" />
-							</a>
-						</div>
-						<div class="collapse" id="cooler-${v.name}-collapsible" 
-								data-parent="#browsers">
-							<div class="card-body">
-								${support[i].textContent}
-							</div>
+	        <div id="browsers">
+				${browsers.map((v, i) => (`<div class="card">
+					<div class="card-header">
+						<a data-toggle="collapse" href="#cooler-${v.name}-collapsible" 
+										 role="button" aria-expanded="false" 
+										 aria-controls="cooler-${v.name}-collapsible"
+										 data-parent="#browsers">
+							<img src="${v.img}" />
+						</a>
+					</div>
+					<div class="collapse" id="cooler-${v.name}-collapsible" 
+							data-parent="#browsers">
+						<div class="card-body">
+							${support[i].textContent}
 						</div>
 					</div>
-				</div>
-				${i % 2 === 1 ? `<div class="w-100"></div>` : ""}`)).join('')}
+				</div>`))}
 			</div>
-	    </div>
+		</div>
     `);
 }
