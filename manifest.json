@@ -14,7 +14,6 @@
 			"matches": ["https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html"]
 		},
 		{
-			"css": ["pages/home.css"],
 			"js": ["pages/home.js"],
 			"matches": ["https://www.coolfaces.net/COOLPUWL/Individual/ShowIndividualPage.aspx*"]
 		}
