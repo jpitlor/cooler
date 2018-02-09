@@ -1,7 +1,4 @@
 $(document).ready(() => {
-	const rightSection = getRightSection();
-	const footer = $('.footer')[0].textContent;
-
 	$('title').html("COOL - Central Office Online");
 	$('body').prepend(`
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -23,37 +20,10 @@ $(document).ready(() => {
 						<a class="nav-link" data-toggle="modal" data-target="#aboutModal" href="#">About</a>
 					</li>
 				</ul>
-				${rightSection}
+				${getRightSection()}
 			</div>
 		</nav>
-		<div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">About</h5>
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						<div class="text-center">
-							<img src="../Images/COOL.jpg" class="rounded" />
-						</div>
-						<p>${footer}</p>
-						<br />
-						<p>This extension was made out of frustration and love by Jordan Pitlor, the treasurer (at the time
-						of development) of the Disney Appreciation Club.</p>
-						
-						<p>The source can be viewed <a href="https://github.com/piticent123/cooler">here</a>, and if
-						something isn't working (or you want to say hi), I can be contacted 
-						<a href="mailto:jpitlor@gmail.com">here</a></p>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					</div>
-				</div>			
-			</div>
-		</div>
+		${getModal()}
     `);
 });
 
@@ -73,4 +43,42 @@ function getRightSection() {
 					<a class="nav-link" href="${logOutLink}">Log Out</a>
 				</li>
 			</ul>`;
+}
+
+function getModal() {
+	let footer = "";
+
+	if (window.location.href !== "https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html") {
+		footer = $('.footer')[0].textContent;
+	}
+
+	return `<div id="aboutModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">About</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<div class="text-center">
+							<img src="../Images/COOL.jpg" class="rounded" />
+						</div>
+						<br />
+						<p>${footer}</p>
+						
+						<p>This extension was made out of frustration and love by Jordan Pitlor, the treasurer (at the time
+						of development) of the Disney Appreciation Club.</p>
+						
+						<p>The source can be viewed <a href="https://github.com/piticent123/cooler">here</a>, and if
+						something isn't working (or you want to say hi), I can be contacted 
+						<a href="mailto:jpitlor@gmail.com">here</a></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					</div>
+				</div>			
+			</div>
+		</div>`;
 }
