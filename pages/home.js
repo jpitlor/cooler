@@ -7,11 +7,11 @@ $(document).ready(function () {
 	let $announcements = $('.pm')[0].textContent.split("\n").filter(s => s.length > 0);
 	let $createPDFButton = $('#IndividualTabContainer_IndividualInOrganizationsTabPanel_IndividualInOrganizationsPDFButton')[0];
 
-	let scripts = document.getElementsByTagName('script');
+	// let scripts = document.getElementsByTagName('script');
 
 	$('body > form > table').remove();
 	$('.navbar-nav')[0].children[0].className += " active";
-	$('body').append(`
+	$('body > form').append(`
 		<div class="container">
 			<div class="card">
 				<div class="card-body">
@@ -67,5 +67,5 @@ $(document).ready(function () {
 		</div>
 	`);
 
-	Array.from(scripts).forEach(node => document.body.appendChild(node));
+	// Array.from(scripts).forEach(node => document.body.appendChild(node));
 });

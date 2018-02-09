@@ -1,5 +1,6 @@
 $(document).ready(() => {
 	const rightSection = getRightSection();
+	const footer = $('.footer')[0].textContent;
 
 	$('title').html("COOL - Central Office Online");
 	$('body').prepend(`
@@ -38,6 +39,7 @@ $(document).ready(() => {
 						<div class="text-center">
 							<img src="../Images/COOL.jpg" class="rounded" />
 						</div>
+						<p>${footer}</p>
 						<br />
 						<p>This extension was made out of frustration and love by Jordan Pitlor, the treasurer (at the time
 						of development) of the Disney Appreciation Club.</p>
