@@ -1,4 +1,6 @@
 $(document).ready(function() {
+	return;
+
 	const $keys = Array.from($('.dBody .fls'));
 	const $myInfo = Array.from($('.dBody .dfv'))
 		.map((v, i) => ({k: $keys[i].textContent, v: v.textContent}))

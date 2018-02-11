@@ -67,7 +67,7 @@ function getModal() {
 						</div>
 						<br />
 						<p>${footer}</p>
-						
+							
 						<p>This extension was made out of frustration and love by Jordan Pitlor, the treasurer (at the time
 						of development) of the Disney Appreciation Club.</p>
 						

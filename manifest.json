@@ -20,6 +20,10 @@
 		{
 			"js": ["pages/club.js"],
 			"matches": ["https://www.coolfaces.net/COOLPUWL/StudentOrganization/ShowStudentOrganizationWVendorPage.aspx*"]
+		},
+		{
+			"js": ["pages/banking.js"],
+			"matches": ["https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWActWVendorPage.aspx*"]
 		}
 	]
 }
