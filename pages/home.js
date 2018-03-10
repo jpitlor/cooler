@@ -1,71 +1,50 @@
 $(document).ready(function () {
+	$.ajax(chrome.extension.getURL("/templates/home.hbs")).done(data => {
+		inject(Handlebars.compile(data));
+	});
+});
+
+function inject(template) {
 	let $keys = Array.from($('.dBody .fls'));
 	let $myInfo = Array.from($('.dBody .dfv'))
-		.map((v, i) => ({k: $keys[i].textContent, v: v.textContent}))
-		.filter(e => /[A-Za-z0-9]+/.exec(e.v));
+		.reduce((p, c, i) => /[A-Za-z0-9]+/.exec(c.textContent) ? ({...p, [$keys[i].textContent]: c.textContent}) : p, {});
 	let $myOrgs = Array.from($('.tre > table > tbody')[0].children);
 	let $announcements = $('.pm')[0].textContent.split("\n").filter(s => s.length > 0);
-	let $createPDFButton = $('#IndividualTabContainer_IndividualInOrganizationsTabPanel_IndividualInOrganizationsPDFButton')[0];
-
-	// let scripts = document.getElementsByTagName('script');
+	let $createPDFButton = $('#IndividualTabContainer_IndividualInOrganizationsTabPanel_IndividualInOrganizationsPDFButton');
 
 	$('body > form > table').remove();
 	$('.navbar-nav')[0].children[0].className += " active";
-	$('body > form').append(`
-		<div class="container">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Reminders</h5>
-					<ul class="list-group">
-						${$announcements.map(a => `<li class="list-group-item">${a}</li>`).join('')}
-					</ul>
-				</div>
-			</div>
-        	
-        	<div class="card">
-	        	<div class="card-body">
-					<h5 class="card-title">Your Information</h5>
-					<ul class="list-group">
-						${$myInfo.map(e => `<li class="list-group-item">
-							<strong>${e.k}:</strong> ${e.v}
-						</li>`).join('')}					
-					</ul>
- 					<a href="#" class="btn btn-primary">Edit</a>						        	
-				</div>	
-			</div>
-        	
-        	<div class="card">
-	        	<div class="card-body">
-					<h5 class="card-title">Your Organizations</h5>
-					<table class="table">
-						<thead class="thead-light">
-							${Array.from($myOrgs[0].children).map(e => `<th scope="col">
-								${e.childNodes[0].innerText}
-							</th>`).join('')}				
-						</thead>
-						<tbody>
-							${$myOrgs.splice(1).map(e => `<tr>
-								${Array.from(e.children).map((f, i) => {
-									let a = f.children[0];
-									if (i !== 0) return `<td>${f.textContent}</td>`;
-									
-									return `<td>
-										<a id="${a.id}" redirecturl="${a.redirecturl}"
-										   href="${a.href}">
-											${f.textContent.split(" ")
-												.map(s => s === "SOGA" ? s : s[0].toUpperCase() + s.substr(1).toLowerCase())
-												.join(" ")}</a> 
-									</td>`							
-								}).join('')}
-							</tr>`).join('')}
-						</tbody>        	
-					</table>
-					<input class="btn btn-primary" id="${$createPDFButton.id}" 
-						   name="${$createPDFButton.name}" type="button" value="Create PDF Summary" />
-				</div>	
-			</div>
-		</div>
-	`);
+	$('body > form').append(template({
+		announcements: $announcements,
+		myInfo: $myInfo,
+		orgs: {
+			columns: Array.from($myOrgs[0].children).map(c => c.childNodes[0].textContent),
+			content: $myOrgs.slice(1).map(c => Array.from(c.children)).map(c => c.map(e => e.innerHTML))
+		},
+		pdfBtn: {
+			id: $createPDFButton.attr('id'),
+			consumers: $createPDFButton.attr('consumers'),
+			name: $createPDFButton.attr('name')
+		}
+	}));
+}
 
-	// Array.from(scripts).forEach(node => document.body.appendChild(node));
-});
+function downloadPDFSummary() {
+	$.ajax({
+		'method': 'POST',
+		'url': 'https://www.coolfaces.net/COOLPUWL/Individual/ShowIndividualPage.aspx',
+		'headers': {
+			"Host": "www.coolfaces.net",
+			"User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:58.0) Gecko/20100101 Firefox/58.0",
+			"Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+			"Accept-Language": "en-US,en;q=0.5",
+			"Accept-Encoding": "gzip, deflate, br",
+			"Referer": "https://www.coolfaces.net/COOLPUWL/Individual/ShowIndividualPage.aspx",
+			"Content-Type": "application/x-www-form-urlencoded",
+			"Content-Length": "5851",
+			"Cookie": "Cool_IronspeedUserName=; Cool_IronspeedPassword=; Cool_IronspeedRememberName=False; Cool_IronspeedRememberPassword=False; ai_user=lXtuP|2018-02-07T23:06:27.971Z; ASP.NET_SessionId=ofkcwt55o4mirc3vvxumzz3b",
+			"Connection": "keep-alive",
+			"Upgrade-Insecure-Requests": "1"
+		}
+	})
+}

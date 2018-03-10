@@ -1,17 +1,20 @@
 $(document).ready(function() {
-	return;
+	$.ajax(chrome.runtime.getURL("templates/club.hbs")).done(data => {
+		inject(Handlebars.compile(data));
+	});
+});
 
+function inject(template) {
 	const $keys = Array.from($('.dBody .fls'));
 	const $myInfo = Array.from($('.dBody .dfv'))
-		.map((v, i) => ({k: $keys[i].textContent, v: v.textContent}))
-		.filter(e => /[A-Za-z0-9]+/.exec(e.v));
+		.reduce((p, c, i) => /[A-Za-z0-9]+/.exec(c.textContent) ? ({...p, [$keys[i].textContent]: c.textContent}) : p, {});
 	const $announcements = $('.pm')[0].textContent.split("\n").filter(s => s.length > 0);
 
 	const $tabs = $('.tre');
 	const $accounts = Array.from($('table > tbody tr', $tabs[0]))
 		.map(r => Array.from(r.cells)
-					   .splice(2)
-					   .map(d => d.innerText))
+			.splice(2)
+			.map(d => d.innerText))
 		.filter(a => a.length > 1);
 	const $individuals = Array.from($('table > tbody tr', $tabs[1]))
 		.map(r => Array.from(r.cells))
@@ -23,91 +26,24 @@ $(document).ready(function() {
 		.filter(a => a.length > 1);
 
 	$('body > form > table').remove();
-	$('body > form').append(`
-		<div class="container">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Reminders</h5>
-					<ul class="list-group">
-						${$announcements.map(a => `<li class="list-group-item">${a}</li>`).join('')}
-					</ul>
-				</div>
-			</div>
-			
-			<div class="card">
-	        	<div class="card-body">
-					<h5 class="card-title">Club Information</h5>
-					<ul class="list-group">
-						${$myInfo.map(e => `<li class="list-group-item">
-							<strong>${e.k}:</strong> ${e.v}
-						</li>`).join('')}					
-					</ul>
- 					<a href="#" class="btn btn-primary">E-Commerce Scan In</a>						        	
-				</div>	
-			</div>
-        	
-        	<div class="card">
-				<div class="card-body">
-				<h5 class="card-title">Accounts</h5>
-					<table class="table">
-						<thead class="thead-light">
-							${$accounts[0].map(e => `<th scope="col">${e}</th>`).join('')}
-						</thead>
-						<tbody>
-							${$accounts.splice(1).map(e => `<tr>
-								${e.map(f => `<td>${f}</td>`).join('')}
-							</tr>`).join('')}
-						</tbody>        	
-					</table>
-				</div>        	
-			</div>
-			
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Board Members Registered With BOSO</h5>
-					<table class="table">
-						<thead class="thead-light">
-							${$individuals[0].map(e => `<th scope="col">${e.childNodes[0].textContent}</th>`).join('')}
-						</thead>
-						<tbody>
-							${$individuals.splice(1).map(e => `<tr>
-								${e.map(f => `<td>${f.innerText}</td>`).join('')}
-							</tr>`).join('')}
-						</tbody>
-					</table>
-				</div>			
-			</div>
-	
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Payees</h5>
-					<table class="table">
-						<thead class="thead-light">
-							${$payees[0].splice(1).map(e => `<th scope="col">${e.childNodes[0].textContent}</th>`).join('')}
-						</thead>
-						<tbody>
-							${$payees.splice(1).map(e => `<tr>
-								${e.splice(3).map(f => `<td>${f.innerText}</td>`).join('')}
-							</tr>`).join('')}
-						</tbody>
-					</table>
-				</div>			
-			</div>
-
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Documents</h5>
-					<table class="table">
-						<thead class="thead-light">
-							${$documents[0].map(e => `<th scope="col">${e}</th>`).join('')}
-						</thead>
-						<tbody>
-							${$documents.splice(1).map(e => `<tr>
-								${e.map(f => `<td>${f}</td>`).join('')}
-							</tr>`).join('')}
-						</tbody>
-					</table>
-				</div>			
-			</div>
-		</div>`);
-});
+	$('body > form').append(template({
+		announcements: $announcements,
+		info: $myInfo,
+		accounts: {
+			headers: $accounts[0],
+			content: $accounts.slice(1)
+		},
+		individuals: {
+			headers: Array.from($individuals[0]).map(e => e.childNodes[0].textContent),
+			content: $individuals.slice(1).map(e => e.innerText)
+		},
+		payees: {
+			headers: Array.from($payees[0]).map(e => e.childNodes[0].textContent),
+			content: $payees.slice(1).map(e => e.innerText)
+		},
+		documents: {
+			headers: $documents[0],
+			content: $documents.slice(1)
+		}
+	}));
+}

@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">TooCOOL Browser Support</h1>
+        <p class="lead">Having troubles viewing your online store? It may be because TooCOOL doesn't
+            support your browser.</p>
+    </div>
+
+    <div id="browsers">
+        {{#each browsers}}
+            <div class="card">
+                <div class="card-header text-center">
+                    <a data-toggle="collapse" href="#cooler-{{this.name}}-collapsible" data-parent="#browsers"
+                       role="button" aria-expanded="false" aria-controls="cooler-{{this.name}}-collapsible">
+                        <img src="{{this.img}}" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="collapse" id="cooler-{{this.name}}-collapsible" data-parent="#browsers">
+                    <div class="card-body">{{{this.support}}}</div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

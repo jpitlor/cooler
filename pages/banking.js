@@ -1,46 +1,41 @@
 $(document).ready(function() {
+	$.ajax(chrome.runtime.getURL("templates/banking.hbs")).done(data => {
+		inject(Handlebars.compile(data));
+	});
+});
+
+function inject(template) {
 	let $keys = Array.from($('.dBody .fls'));
 	let $accountInfo = Array.from($('.dBody .dfv'))
-		.map((v, i) => ({k: $keys[i].textContent, v: v.textContent}))
-		.filter(e => /[A-Za-z0-9]+/.exec(e.v));
+		.reduce((p, c, i) => /[A-Za-z0-9]+/.exec(c.textContent) ? {...p, [$keys[i].textContent]: c.textContent} : p, {});
 
 	const $tabs = $('.tre');
 	const tabs = ["Payments In Progress", "Payments", "Deposits", "Transfers", "Activity", "Payees", "Documents"];
 	const getTable = i => Array.from($('table > tbody > tr', $tabs[i])).map(r => Array.from(r.cells));
 
 	$('body > form > table').remove();
-	$('body > form').append(`
-		<div class="container">
-        	<div class="card">
-	        	<div class="card-body">
-					<h5 class="card-title">Account Information</h5>
-					<ul class="list-group">
-						${$accountInfo.map(e => `<li class="list-group-item">
-							<strong>${e.k}:</strong> ${e.v}
-						</li>`).join('')}					
-					</ul>
- 					<a href="#" class="btn btn-primary">Generate Account Statement</a>				        	
-				</div>	
-			</div>
-			
-			${tabs.map((t, i) => {
-				const table = getTable(i);
-				
-				return `<div class="card">
-					<div class="card-body">
-						<h5 class="card-title">${t}</h5>
-						<table class="table">
-							<thead class="thead-light">
-								${table[0].map(e => `<th scope="col">${e.childNodes[0].textContent}</th>`).join('')}
-							</thead>
-							<tbody>
-								${table.splice(1).map(e => `<tr>
-									${e.map(f => `<td>${f.innerText}</td>`).join('')}
-								</tr>`).join('')}
-							</tbody>
-						</table>
-					</div>			
-				</div>`
-			}).join('')}
-		</div>`);
-});
+	$('body > form').append(template({
+		info: $accountInfo,
+		tabs: tabs.map((t, i) => {
+			return getGoodTable(getTable(i), t)
+		})
+	}));
+}
+
+function getGoodTable(table, tab) {
+	if (tab !== "Activity") return {
+		title: tab,
+		table: {
+			headers: Array.from(table[0]).map(e => e.childNodes[0].textContent),
+			content: table.slice(1).map(e => e.map(c => c.innerText))
+		}
+	};
+
+	return {
+		title: tab,
+		table: {
+			headers: Array.from(table[0]).map(e => e.childNodes[0].textContent).slice(1),
+			content: table.slice(1).map(e => e.slice(1).map(c => c.innerText)).filter(t => t.length > 1)
+		}
+	};
+}
