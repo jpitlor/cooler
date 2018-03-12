@@ -1,224 +1,310 @@
 <div class="container">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Account Information</h5>
-            <ul class="list-group">
-                {{#each info}}
-                    <li class="list-group-item">
-                        <strong>{{@key}}: </strong>{{this}}
-                    </li>
-                {{/each}}
-            </ul>
-            <a href="#" class="btn btn-raised  btn-secondary">Generate Account Statement</a>
-        </div>
-    </div>
+	<div class="row">
+		<div class="card col-md mx-3">
+			<div class="card-body">
+				<h5 class="card-title">Account Information</h5>
+				<ul class="list-group">
+					{{#each info}}
+						<li class="list-group-item">
+							<strong>{{@key}}: </strong>{{this}}
+						</li>
+					{{/each}}
+				</ul>
+				<a href="#" class="btn btn-outline btn-secondary">Generate Account Statement</a>
+			</div>
+		</div>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Payments Being Processed</h5>
-            <table class="table">
-                <thead class="thead-light">
-                    {{#each paymentsIP.headers}}
-                        <th scope="col">{{this}}</th>
-                    {{/each}}
-                </thead>
-                <tbody>
-                    {{#each paymentsIP.content}}
-                        <tr>
-                            {{#each this}}
-                                <td>{{this}}</td>
-                            {{/each}}
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            <div class="btn-toolbar" role="toolbar" aria-label="Buttons">
-                <div class="btn-group mr-2" role="group" aria-label="Add">
-                    <button type="button" class="btn btn-raised  btn-secondary">New</button>
-                </div>
-                <div class="btn-group mr-2" role="group" aria-label="Export">
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to PDF</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Microsoft Word Report</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to Excel</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to CSV</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="View">
-                    <button type="button" class="btn btn-raised  btn-secondary">Refresh</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Clear Filters</button>
-                </div>
-            </div>
-        </div>
-    </div>
+		<div class="card col-md mx-3">
+			<div class="card-body">
+				<h5 class="card-title">Payments Being Processed</h5>
+				<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+					<div class="btn-group mr-2" role="group" aria-label="Add">
+						<button type="button" class="btn btn-secondary bmd-btn-icon">
+							<i class="fal fa-plus"/>
+						</button>
+					</div>
+					<div class="btn-group mr-2" role="group" aria-label="Export">
+						<button type="button" class="btn btn-secondary bmd-btn-icon">
+							<i class="fal fa-file-pdf"/>
+						</button>
+						<button type="button" class="btn btn-secondary bmd-btn-icon">
+							<i class="fal fa-file-word"/>
+						</button>
+						<button type="button" class="btn btn-secondary bmd-btn-icon">
+							<i class="fal fa-file-excel"/>
+						</button>
+						<button type="button" class="btn btn-secondary bmd-btn-icon">
+							<i class="fal fa-file-alt"/>
+						</button>
+					</div>
+					<div class="btn-group mr-2" role="group" aria-label="Add">
+						<button type="button" class="btn btn-secondary bmd-btn-icon">
+							<i class="fal fa-sync"/>
+						</button>
+						<button type="button" class="btn btn-secondary bmd-btn-icon">
+							<i class="fal fa-filter" />
+						</button>
+					</div>
+				</div>
+				<table class="table table-hover">
+					<thead class="thead-light">
+						{{#each paymentsIP.headers}}
+							<th scope="col">{{this}}</th>
+						{{/each}}
+					</thead>
+					<tbody>
+						{{#each paymentsIP.content}}
+							<tr>
+								{{#each this}}
+									<td>{{this}}</td>
+								{{/each}}
+							</tr>
+						{{/each}}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Completed Payments</h5>
-            <table class="table">
-                <thead class="thead-light">
-                    {{#each payments.headers}}
-                        <th scope="col">{{this}}</th>
-                    {{/each}}
-                </thead>
-                <tbody>
-                    {{#each payments.content}}
-                        <tr>
-                            {{#each this}}
-                                <td>{{this}}</td>
-                            {{/each}}
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            <div class="btn-toolbar" role="toolbar" aria-label="Buttons">
-                <div class="btn-group mr-2" role="group" aria-label="Export">
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to PDF</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Microsoft Word Report</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to Excel</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to CSV</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="View">
-                    <button type="button" class="btn btn-raised  btn-secondary">Refresh</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Clear Filters</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Completed Payments</h5>
+			<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+				<div class="btn-group mr-2" role="group" aria-label="Export">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-pdf"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-word"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-excel"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-alt"/>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-sync"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-filter" />
+					</button>
+				</div>
+			</div>
+			<table class="table table-hover">
+				<thead class="thead-light">
+					{{#each payments.headers}}
+						<th scope="col">{{this}}</th>
+					{{/each}}
+				</thead>
+				<tbody>
+					{{#each payments.content}}
+						<tr>
+							{{#each this}}
+								<td>{{this}}</td>
+							{{/each}}
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Deposits</h5>
-            <table class="table">
-                <thead class="thead-light">
-                    {{#each deposits.headers}}
-                        <th scope="col">{{this}}</th>
-                    {{/each}}
-                </thead>
-                <tbody>
-                    {{#each deposits.content}}
-                        <tr>
-                            {{#each this}}
-                                <td>{{this}}</td>
-                            {{/each}}
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            <div class="btn-toolbar" role="toolbar" aria-label="Buttons">
-                <div class="btn-group mr-2" role="group" aria-label="Export">
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to PDF</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Microsoft Word Report</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to Excel</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to CSV</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="View">
-                    <button type="button" class="btn btn-raised  btn-secondary">Refresh</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Clear Filters</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Deposits</h5>
+			<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-plus"/>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Export">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-pdf"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-word"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-excel"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-alt"/>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-sync"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-filter" />
+					</button>
+				</div>
+			</div>
+			<table class="table table-hover">
+				<thead class="thead-light">
+					{{#each deposits.headers}}
+						<th scope="col">{{this}}</th>
+					{{/each}}
+				</thead>
+				<tbody>
+					{{#each deposits.content}}
+						<tr>
+							{{#each this}}
+								<td>{{this}}</td>
+							{{/each}}
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Transfers to Other Purdue Accounts</h5>
-            <table class="table">
-                <thead class="thead-light">
-                    {{#each transfers.headers}}
-                        <th scope="col">{{this}}</th>
-                    {{/each}}
-                </thead>
-                <tbody>
-                    {{#each transfers.content}}
-                        <tr>
-                            {{#each this}}
-                                <td>{{this}}</td>
-                            {{/each}}
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            <div class="btn-toolbar" role="toolbar" aria-label="Buttons">
-                <div class="btn-group mr-2" role="group" aria-label="Export">
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to PDF</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Microsoft Word Report</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to Excel</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to CSV</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="View">
-                    <button type="button" class="btn btn-raised  btn-secondary">Refresh</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Clear Filters</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Transfers to Other Purdue Accounts</h5>
+			<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-plus"/>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Export">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-pdf"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-word"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-excel"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-alt"/>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-sync"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-filter" />
+					</button>
+				</div>
+			</div>
+			<table class="table table-hover">
+				<thead class="thead-light">
+					{{#each transfers.headers}}
+						<th scope="col">{{this}}</th>
+					{{/each}}
+				</thead>
+				<tbody>
+					{{#each transfers.content}}
+						<tr>
+							{{#each this}}
+								<td>{{this}}</td>
+							{{/each}}
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Payees</h5>
-            <table class="table">
-                <thead class="thead-light">
-                    {{#each payees.headers}}
-                        <th scope="col">{{this}}</th>
-                    {{/each}}
-                </thead>
-                <tbody>
-                    {{#each payees.content}}
-                        <tr>
-                            {{#each this}}
-                                <td>{{this}}</td>
-                            {{/each}}
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            <div class="btn-toolbar" role="toolbar" aria-label="Buttons">
-                <div class="btn-group mr-2" role="group" aria-label="Add">
-                    <button type="button" class="btn btn-raised  btn-secondary">New</button>
-                </div>
-                <div class="btn-group mr-2" role="group" aria-label="Export">
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to PDF</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Microsoft Word Report</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to Excel</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Export to CSV</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="View">
-                    <button type="button" class="btn btn-raised  btn-secondary">Refresh</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Clear Filters</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Payees</h5>
+			<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-plus"/>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Export">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-pdf"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-word"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-excel"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-file-alt"/>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-sync"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-filter" />
+					</button>
+				</div>
+			</div>
+			<table class="table table-hover">
+				<thead class="thead-light">
+					{{#each payees.headers}}
+						<th scope="col">{{this}}</th>
+					{{/each}}
+				</thead>
+				<tbody>
+					{{#each payees.content}}
+						<tr>
+							{{#each this}}
+								<td>{{this}}</td>
+							{{/each}}
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
 
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Unattached Documents</h5>
-            <table class="table">
-                <thead class="thead-light">
-                    {{#each unattachedDocs.headers}}
-                        <th scope="col">{{this}}</th>
-                    {{/each}}
-                </thead>
-                <tbody>
-                    {{#each unattachedDocs.content}}
-                        <tr>
-                            {{#each this}}
-                                <td>{{this}}</td>
-                            {{/each}}
-                        </tr>
-                    {{/each}}
-                </tbody>
-            </table>
-            <div class="btn-toolbar" role="toolbar" aria-label="Buttons">
-                <div class="btn-group mr-2" role="group" aria-label="Add">
-                    <button type="button" class="btn btn-raised  btn-secondary">New</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Edit</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Delete</button>
-                </div>
-                <div class="btn-group" role="group" aria-label="View">
-                    <button type="button" class="btn btn-raised  btn-secondary">Refresh</button>
-                    <button type="button" class="btn btn-raised  btn-secondary">Clear Filters</button>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Unattached Documents</h5>
+			<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-plus"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-edit"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-trash"/>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-sync"/>
+					</button>
+					<button type="button" class="btn btn-secondary bmd-btn-icon">
+						<i class="fal fa-filter" />
+					</button>
+				</div>
+			</div>
+			<table class="table table-hover">
+				<thead class="thead-light">
+					{{#each unattachedDocs.headers}}
+						<th scope="col">{{this}}</th>
+					{{/each}}
+				</thead>
+				<tbody>
+					{{#each unattachedDocs.content}}
+						<tr>
+							{{#each this}}
+								<td>{{this}}</td>
+							{{/each}}
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
 </div>

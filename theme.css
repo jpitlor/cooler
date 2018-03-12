@@ -10,10 +10,6 @@ nav, .card, .list-group {
     margin-top: 1em;
 }
 
-.btn-group .btn:not(:first-child, :last-child) {
-
-}
-
 /* TooCOOL's URLs are really long */
 #club-information {
     overflow-wrap: break-word;

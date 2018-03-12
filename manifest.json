@@ -10,7 +10,8 @@
 	"content_scripts": [
 		{
 			"css": ["vendor/bootstrap.min.css", "theme.css"],
-			"js": ["vendor/jquery.min.js", "vendor/popper.min.js", "vendor/bootstrap.min.js", "vendor/handlebars.js", "theme.js"],
+			"js": ["vendor/jquery.min.js", "vendor/popper.min.js", "vendor/bootstrap.min.js", "vendor/icons.min.js",
+				"vendor/handlebars.js", "theme.js"],
 			"matches": ["https://www.coolfaces.net/*"]
 		},
 		{
