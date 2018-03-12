@@ -12,10 +12,9 @@ function inject(template) {
 
 	const $tabs = $('.tre');
 	const $accounts = Array.from($('table > tbody tr', $tabs[0]))
-		.map(r => Array.from(r.cells)
-			.splice(2)
-			.map(d => d.innerText))
-		.filter(a => a.length > 1);
+		.map(r => Array.from(r.cells))
+		.filter(a => a.length === 13);
+	$accounts.pop(); // There's an extra summary row
 	const $individuals = Array.from($('table > tbody tr', $tabs[1]))
 		.map(r => Array.from(r.cells))
 		.filter(a => a.length > 1);
@@ -29,21 +28,23 @@ function inject(template) {
 	$('body > form').append(template({
 		announcements: $announcements,
 		info: $myInfo,
-		accounts: {
-			headers: $accounts[0],
-			content: $accounts.slice(1)
-		},
+		accounts: $accounts.slice(1).map(a => ({
+			name: a[2].innerText.trim(),
+			balance: a[12].innerText,
+			bankHref: a[0].querySelector('a').href,
+			storeHref: a[1].querySelector('a').href
+		})),
 		individuals: {
 			headers: Array.from($individuals[0]).map(e => e.childNodes[0].textContent),
-			content: $individuals.slice(1).map(e => e.innerText)
+			content: $individuals.slice(1).map(e => e.map(f => f.innerText))
 		},
 		payees: {
 			headers: Array.from($payees[0]).map(e => e.childNodes[0].textContent),
-			content: $payees.slice(1).map(e => e.innerText)
+			content: $payees.slice(1).map(e => e.slice(2).map(f => f.innerText))
 		},
 		documents: {
 			headers: $documents[0],
-			content: $documents.slice(1)
+			content: $documents.slice(1).map(e => e.map(f => f.innerText))
 		}
 	}));
 }
