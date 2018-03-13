@@ -7,7 +7,10 @@ $(document).ready(function () {
 function inject(template) {
 	let $keys = Array.from($('.dBody .fls'));
 	let $myInfo = Array.from($('.dBody .dfv'))
-		.reduce((p, c, i) => /[A-Za-z0-9]+/.exec(c.textContent) ? ({...p, [$keys[i].textContent]: c.textContent}) : p, {});
+		.reduce((p, c, i) => /[A-Za-z0-9]+/.exec(c.textContent) ? ({
+			...p,
+			[$keys[i].textContent]: c.textContent
+		}) : p, {});
 	let $myOrgs = Array.from($('.tre > table > tbody')[0].children);
 	let $announcements = $('.pm')[0].textContent.split("\n").filter(s => s.length > 0);
 	let $createPDFButton = $('#IndividualTabContainer_IndividualInOrganizationsTabPanel_IndividualInOrganizationsPDFButton');

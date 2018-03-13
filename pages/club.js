@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 	$.ajax(chrome.runtime.getURL("templates/club.hbs")).done(data => {
 		inject(Handlebars.compile(data));
 	});
@@ -7,7 +7,10 @@ $(document).ready(function() {
 function inject(template) {
 	const $keys = Array.from($('.dBody .fls'));
 	const $myInfo = Array.from($('.dBody .dfv'))
-		.reduce((p, c, i) => /[A-Za-z0-9]+/.exec(c.textContent) ? ({...p, [$keys[i].textContent]: c.textContent}) : p, {});
+		.reduce((p, c, i) => /[A-Za-z0-9]+/.exec(c.textContent) ? ({
+			...p,
+			[$keys[i].textContent]: c.textContent
+		}) : p, {});
 	const $announcements = $('.pm')[0].textContent.split("\n").filter(s => s.length > 0);
 
 	const $tabs = $('.tre');
