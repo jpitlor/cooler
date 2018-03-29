@@ -11,9 +11,15 @@ function inject(template) {
 			...p,
 			[$keys[i].textContent]: c.textContent
 		} : p, {});
-	const $tables = $('.tre'); // this has to be here (1) for efficiency and (2) because it gets deleted in the next line
+	const $tables = $('.tre'); // this has to be here for efficiency
 
-	$('body > form > table').remove();
+	console.log($('.prbbc input'));
+	// btn.src = "data:image/svg+xml;utf8,<svg class=\"svg-inline--fa fa-plus fa-w-14\" aria-hidden=\"true\" data-prefix=\"fal\" data-icon=\"plus\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\" data-fa-i2svg=\"\"><path fill=\"currentColor\" d=\"M436 238H242V44c0-6.6-5.4-12-12-12h-12c-6.6 0-12 5.4-12 12v194H12c-6.6 0-12 5.4-12 12v12c0 6.6 5.4 12 12 12h194v194c0 6.6 5.4 12 12 12h12c6.6 0 12-5.4 12-12V274h194c6.6 0 12-5.4 12-12v-12c0-6.6-5.4-12-12-12z\"/></svg>";
+	// btn.className = 'btn btn-raised bmd-btn-icon';
+	// btn.removeAttribute('onmouseover');
+	// btn.removeAttribute('onmouseout');
+
+	$('body > form > table').hide();
 	$('body > form').append(template({
 		info: $accountInfo,
 		paymentsIP: getTable(0, $tables),

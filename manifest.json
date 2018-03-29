@@ -23,6 +23,10 @@
 			"matches": ["https://www.coolfaces.net/COOLPUWL/Individual/ShowIndividualPage.aspx*"]
 		},
 		{
+			"js": ["pages/edit-individual.js"],
+			"matches": ["https://www.coolfaces.net/COOLPUWL/Individual/EditIndividualPage.aspx*"]
+		},
+		{
 			"js": ["pages/club.js"],
 			"matches": ["https://www.coolfaces.net/COOLPUWL/StudentOrganization/ShowStudentOrganizationWVendorPage.aspx*"]
 		},

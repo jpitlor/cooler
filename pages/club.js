@@ -27,7 +27,7 @@ function inject(template) {
 		.map(r => Array.from(r.cells).map(d => d.innerText))
 		.filter(a => a.length > 1);
 
-	$('body > form > table').remove();
+	$('body > form > table').hide();
 	$('body > form').append(template({
 		announcements: $announcements,
 		info: $myInfo,

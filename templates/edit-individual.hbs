@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="card">
+		<div class="card-body">
+			<h5 class="card-title">Edit Your Information</h5>
+			<form>
+				{{#each immutable}}
+					<div class="row">
+						<div class="col">
+							<label>{{@key}}</label>
+						</div>
+						<div class="col">
+							<label>{{this}}</label>
+						</div>
+					</div>
+				{{/each}}
+				{{#each mutable}}
+					<div class="row">
+						<div class="col">
+							<label for="{{this}}">{{this}}</label>
+						</div>
+						<div class="col">
+							<input type="text" class="form-control" placeholder="{{this}}" id="{{this}}" />
+						</div>
+					</div>
+				{{/each}}
+			</form>
+		</div>
+		<div class="card-footer">
+			<button type="submit" class="btn btn-raised btn-primary">Save</button>
+			<button type="submit" class="btn btn-raised btn-secondary">Cancel</button>
+		</div>
+	</div>
+</div>

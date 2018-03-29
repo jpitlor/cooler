@@ -21,7 +21,8 @@
 						</li>
 					{{/each}}
 				</ul>
-				<a href="#" class="btn btn-raised  btn-secondary">Edit</a>
+				<a class="btn btn-raised btn-secondary"
+				   onclick="document.getElementById(`{{editInfoBtnId}}`).click();">Edit</a>
 			</div>
 		</div>
 	</div>
@@ -45,9 +46,8 @@
 					{{/each}}
 				</tbody>
 			</table>
-			<input class="btn btn-raised  btn-secondary" id="{{pdfBtn.id}}"
-			       consumers="{{pdfBtn.consumers}}" name="{{pdfBtn.name}}"
-			       type="button" value="Create PDF Summary" onclick="downloadPDFSummary()"/>
+			<input class="btn btn-raised  btn-secondary" type="button" value="Create PDF Summary"
+			       onclick="document.getElementById(`{{pdfBtnId}}`).click();"/>
 		</div>
 	</div>
 </div>
