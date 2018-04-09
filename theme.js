@@ -1,8 +1,6 @@
-$(document).ready(() => {
-	$.ajax(chrome.runtime.getURL("theme.hbs")).done(data => {
-		injectHeader(Handlebars.compile(data));
-	});
-});
+fetch(chrome.extension.getURL('/theme.hbs'))
+	.then(r => r.text())
+	.then(d => injectHeader(Handlebars.compile(d)));
 
 function injectHeader(template) {
 	const isBrowserPage = window.location.href === "https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html";

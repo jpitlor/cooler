@@ -1,7 +1,7 @@
-$(document).ready(function () {
-	$.ajax(chrome.runtime.getURL("templates/banking.hbs")).done(data => {
-		inject(Handlebars.compile(data));
-	});
+chrome.runtime.sendMessage({from: 'cooler-content-script'}, () => {
+	fetch(chrome.extension.getURL('/templates/banking.hbs'))
+		.then(r => r.text())
+		.then(d => inject(Handlebars.compile(d)));
 });
 
 function inject(template) {
@@ -13,11 +13,10 @@ function inject(template) {
 		} : p, {});
 	const $tables = $('.tre'); // this has to be here for efficiency
 
-	console.log($('.prbbc input'));
-	// btn.src = "data:image/svg+xml;utf8,<svg class=\"svg-inline--fa fa-plus fa-w-14\" aria-hidden=\"true\" data-prefix=\"fal\" data-icon=\"plus\" role=\"img\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 448 512\" data-fa-i2svg=\"\"><path fill=\"currentColor\" d=\"M436 238H242V44c0-6.6-5.4-12-12-12h-12c-6.6 0-12 5.4-12 12v194H12c-6.6 0-12 5.4-12 12v12c0 6.6 5.4 12 12 12h194v194c0 6.6 5.4 12 12 12h12c6.6 0 12-5.4 12-12V274h194c6.6 0 12-5.4 12-12v-12c0-6.6-5.4-12-12-12z\"/></svg>";
-	// btn.className = 'btn btn-raised bmd-btn-icon';
-	// btn.removeAttribute('onmouseover');
-	// btn.removeAttribute('onmouseout');
+	const $theirButtons = $('.prbbc input');
+	const $myButtons = $('.bmd-btn-icon');
+
+	$myButtons.each(console.log);
 
 	$('body > form > table').hide();
 	$('body > form').append(template({
