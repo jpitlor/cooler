@@ -11,7 +11,12 @@ function injectHeader(template) {
 
 	$('title').html("COOL - Central Office Online");
 
+	const favicon = chrome.extension.getURL('/favicon.ico');
+	$('head').append(`<link rel="shortcut icon" type="image/x-icon" href="${favicon}" />`);
+
 	let $body = $('body');
 	$body.addClass('bg-light');
 	$body.prepend(template({footer, logOutLink, name}));
+
+	chrome.runtime.sendMessage({from: 'cooler-theme-injected'});
 }

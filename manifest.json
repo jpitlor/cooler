@@ -6,7 +6,8 @@
 	"web_accessible_resources": [
 		"templates/*",
 		"pages/*",
-		"theme.hbs"
+		"theme.hbs",
+		"favicon.ico"
 	],
 	"content_scripts": [
 		{
@@ -56,6 +57,6 @@
 	},
 	"permissions": [
 		"activeTab",
-		"*://*.coolfaces.net/*"
+		"*://www.coolfaces.net/*"
 	]
 }

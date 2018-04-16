@@ -13,11 +13,6 @@ function inject(template) {
 		} : p, {});
 	const $tables = $('.tre'); // this has to be here for efficiency
 
-	const $theirButtons = $('.prbbc input');
-	const $myButtons = $('.bmd-btn-icon');
-
-	$myButtons.each(console.log);
-
 	$('body > form > table').hide();
 	$('body > form').append(template({
 		info: $accountInfo,
@@ -29,6 +24,13 @@ function inject(template) {
 		payees: getTable(5, $tables),
 		unattachedDocs: getTable(6, $tables)
 	}));
+
+	const $theirButtons = $('.prbbc input');
+	$('.bmd-btn-icon').each(function(i) {
+		$(this).on('click', function() {
+			$theirButtons[i].click()
+		});
+	});
 }
 
 function getTable(i, $tables) {
