@@ -1,8 +1,11 @@
-// This is much easier than putting the whole theme in every match
+// This is much easier than putting the whole theme in every match.
+// The downside is that the extension requests permissions to view/edit
+// content on CoolFaces.net, but that was kinda implied anyway.
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.from === 'cooler-content-script') {
-		const files = ["vendor/jquery.min.js", "vendor/popper.min.js", "vendor/bootstrap.min.js", "vendor/icons.min.js",
-			"vendor/handlebars.js", "vendor/bootstrap.min.css", "theme.css", "theme.js"];
+		const files = ["vendor/jquery.min.js", "vendor/popper.min.js", "vendor/bootstrap.min.js",
+			"vendor/icons.min.js", "vendor/handlebars.js", "vendor/fonts.css", "vendor/purdue-bootstrap.min.css",
+			"theme.css", "theme.js"];
 		files.reduce((promise, file) => promise.then(inject(file)), Promise.resolve([])).then(sendResponse);
 
 		return true;
