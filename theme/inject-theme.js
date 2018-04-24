@@ -5,7 +5,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.from === 'cooler-content-script') {
 		const files = ["vendor/jquery.min.js", "vendor/popper.min.js", "vendor/bootstrap.min.js",
 			"vendor/icons.min.js", "vendor/handlebars.js", "vendor/fonts.css", "vendor/purdue-bootstrap.min.css",
-			"theme.css", "theme.js"];
+			"theme/theme.css", "theme/theme.js"];
 		files.reduce((promise, file) => promise.then(inject(file)), Promise.resolve([])).then(sendResponse);
 
 		return true;

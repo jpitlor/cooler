@@ -25,7 +25,7 @@ function inject(template) {
 	const body = $('body > form > table');
 	body.remove();
 	$('.navbar-nav')[0].children[0].className += " active";
-	$('body > form').append(template({announcements, myInfo, orgs}));
+	$('.maincontent').append(template({announcements, myInfo, orgs}));
 
 	const $theirButtons = $('input', body);
 	$('.btn').each(function(i) {
@@ -33,6 +33,4 @@ function inject(template) {
 			$theirButtons[i].click();
 		})
 	});
-
-	console.log(body);
 }

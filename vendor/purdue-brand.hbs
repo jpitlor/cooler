@@ -1,106 +1,13 @@
-<!--suppress ALL -->
-
 <div class="container">
 	<a class="nav nav-skipto" href="#main">Skip to main content</a>
 </div>
 <div class="navbar goldbar" role="navigation">
 	<div class="container">
-		<div class="navbar-header">
-			<button class="left navbar-toggle" data-target=".gold" data-toggle="collapse" type="button">
-				<span class="icon-bar"/>
-				<span class="icon-bar"/>
-				<span class="icon-bar"/>
-				Quick Links
-			</button>
-			<!--<p class="quickLinkLabel">Quick Links</p>-->
-			<button class="navbar-toggle search" data-target="#search" data-toggle="collapse"
-			        style="float:right;" type="button">
-				<i class="fa fa-search fa-lg"/>
-			</button>
-		</div>
-		<div class="collapse navbar-collapse right search" id="search">
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#"><i
-							class="fa fa-search fa-lg"/></a>
-					<ul class="dropdown-menu">
-						<li>
-							<div class="form-group">
-								<div id="cse-search-form">Loading</div>
-								<script src="https://www.google.com/jsapi" type="text/javascript"></script>
-								<script type="text/javascript">
-									// <![CDATA[
-									google.load('search', '1', {
-										language: 'en',
-										style: google.loader.themes.MINIMALIST
-									});
-									google.setOnLoadCallback(function () {
-										var customSearchOptions = {};
-										var orderByOptions = {};
-										orderByOptions['keys'] = [{label: 'Relevance', key: ''}, {
-											label: 'Date',
-											key: 'date'
-										}];
-										customSearchOptions['enableOrderBy'] = true;
-										customSearchOptions['orderByOptions'] = orderByOptions;
-										var customSearchControl = new google.search.CustomSearchControl('017690826183710227054:mjxnqnpskjk', customSearchOptions);
-										customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-										var options = new google.search.DrawOptions();
-										options.enableSearchboxOnly('https://www.purdue.edu/purdue/search.html', 'q');
-										customSearchControl.draw('cse-search-form', options);
-									}, true);
-									// ]]>
-								</script>
-							</div>
-						</li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-		<div class="collapse navbar-collapse gold">
-			<ul class="nav navbar-nav information">
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Find Info For <b
-						class="caret"/></a>
-					<ul class="dropdown-menu">
-						<p class="hide">Find Info For</p>
-						<li><a href="http://www.purdue.edu/purdue/current_students/index.html">Current
-							Students</a>
-						</li>
-						<li><a href="http://www.purdue.edu/purdue/prospective_students/index.html">Prospective
-							Students</a>
-						</li>
-						<li><a href="http://www.purdue.edu/purdue/alumni/index.html">Alumni and Friends</a>
-						</li>
-						<li><a href="http://www.purdue.edu/purdue/engage/index.html">Engage with Purdue</a>
-						</li>
-						<li><a href="http://www.purdue.edu/purdue/careers/index.html">Careers</a>
-						</li>
-						<li><a href="http://www.purdue.edu/purdue/commercialization/index.html">Entrepreneurship
-							and Commercialization</a>
-						</li>
-						<li><a href="http://www.purdue.edu/purdue/research/index.html">Research and
-							Innovation</a>
-						</li>
-					</ul>
-				</li>
-			</ul>
+		<div class="collapse navbar-collapse right gold">
 			<ul class="nav navbar-nav right quicklinks">
-				<p class="hide">Quick Links</p>
-				<li><a href="http://www.purdue.edu/purdue/admissions/index.html">Apply</a>
-				</li>
-				<li><a href="http://www.purdue.edu/newsroom/purdue-brand.hbs">News</a>
-				</li>
-				<li><a href="http://www.purdue.edu/president/purdue-brand.hbs">President</a>
-				</li>
-				<li><a href="http://www.purdueofficialstore.com/">Shop</a>
-				</li>
-				<li><a href="http://www.purdue.edu/visit/purdue-brand.hbs">Visit</a>
-				</li>
-				<li>
-					<a href="https://securelb.imodules.com/s/1461/research/hybrid/index.aspx?sid=1461&amp;gid=1010&amp;pgid=1754&amp;cid=4045">Give</a>
-				</li>
-				<li><a href="http://www.purdue.edu/ea">Emergency</a>
-				</li>
+				<!-- TODO put this in with handlebars -->
+				<li><a href="#">Logged in as Jordan</a></li>
+				<li><a href="http://www.purdue.edu/purdue/admissions/index.html">Log Out</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->
@@ -118,12 +25,13 @@
 				</a>
 			</div>
 			<div class="department col-lg-10 col-md-9 col-sm-9 col-xs-12">
-				<a href="index.html">Organization Name Here</a>
-				<span class="tagline"><a href="#">Secondary Name College, School or Unit</a></span>
+				<a href="index.html">Central Office Online</a>
+				<span class="tagline"><a href="#">Business Office for Student Organizations</a></span>
 			</div>
 		</div>
 	</div>
 </div>
+<!-- TODO put active link in from handlebars -->
 <div class="navbar navbar-inverse blackbar" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -136,93 +44,21 @@
 		</div>
 		<div class="collapse navbar-collapse black">
 			<ul class="nav navbar-nav">
-				<li class="first"><a href="#">Home</a>
-				</li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-				                        href="/templates/homepages/department1.html">College<span
-						class="caret"/></a>
-					<ul class="dropdown-menu">
-						<li><a href="/templates/college.html">Mixed Tiles Example</a>
-						</li>
-						<li class="dropdown-submenu">
-							<a class="dropdown-toggle" data-toggle="dropdown"
-							   href="/templates/college-audience-1.html">Audience Tiles<span
-									class="caret"/></a>
-							<ul class="dropdown-menu">
-								<li><a href="/templates/college-audience-1.html">Audience Tiles Example 1</a>
-								</li>
-								<li><a href="/templates/college-audience-2.html">Audience Tiles Example 2</a>
-								</li>
-							</ul>
-						</li>
-						<li class="dropdown-submenu">
-							<a class="dropdown-toggle" data-toggle="dropdown"
-							   href="/templates/college-news-1.html">News Tiles<span class="caret"/></a>
-							<ul class="dropdown-menu">
-								<li><a href="/templates/college-news-1.html">News Tiles Example 1</a>
-								</li>
-								<li><a href="/templates/college-news-2.html">News Tiles Example 2</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-				                        href="/templates/homepages/department1.html">Department/Office<span
-						class="caret"/></a>
-					<ul class="dropdown-menu">
-						<li><a href="/templates/deptOffice-tiles.html">Tiles</a>
-						</li>
-						<li><a href="/templates/deptOffice-tabs.html">Tabs</a>
-						</li>
-					</ul>
-				</li>
-				<li class="dropdown current"><a href="/templates/audience.html">Audience</a>
-				</li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"
-				                        href="/templates/content/content1.html">Content<span
-						class="caret"/></a>
-					<ul class="dropdown-menu">
-						<li><a href="/templates/content-1.html">Content Example 1</a>
-						</li>
-						<li><a href="/templates/content-2.html">Content Example 2</a>
-						</li>
-						<li class="dropdown-submenu">
-							<a class="dropdown-toggle" data-toggle="dropdown" href="#">Submenu Example<span
-									class="caret"/></a>
-							<ul class="dropdown-menu">
-								<li><a href="#">Place Holder Link 1</a>
-								</li>
-								<li><a href="#">Place Holder Link 2</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-				</li>
-				<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Patterns<span
-						class="caret"/></a>
-					<ul class="dropdown-menu">
-						<li><a href="/templates/patterns/accordion.html">Accordion</a>
-						</li>
-						<li><a href="/templates/patterns/button.html">Button</a>
-						</li>
-						<li><a href="/templates/patterns/typography.html">Typography</a>
-						</li>
-					</ul>
-				</li>
+				<li class="first"><a href="/templates/homepages/department1.html">Clubs</a></li>
+				<li class="dropdown"><a href="/templates/homepages/department1.html">Browser Support</a></li>
+				<li class="dropdown"><a data-toggle="modal" data-target="#aboutModal" href="#">About</a></li>
 			</ul>
 		</div>
 	</div>
 </div>
+<!-- TODO insert breadcrumbs from handlebars -->
 <div class="breadcrumb">
 	<div class="container">
 		<div class="row">
 			<div id="breadcrumbs">
 				<ol class="col-lg-12 col-md-12 col-sm-12">
-					<li><a href="../colors.html">Visual Identity</a>
-					</li>
-					<li><a href="webtemplates.html">Digital</a>
-					</li>
+					<li><a href="../colors.html">Visual Identity</a></li>
+					<li><a href="webtemplates.html">Digital</a></li>
 				</ol>
 			</div>
 		</div>
@@ -231,104 +67,21 @@
 <main id="main" class="content">
 	<div class="container">
 		<div class="row">
-			<div class="maincontent col-lg-9 col-md-9 col-sm-9 right">
-				<h1>Page Title Goes Here</h1>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis vitae lacinia dui, ac lacinia
-					dolor. Maecenas mattis nulla ac purus mattis, sit amet facilisis dolor luctus. Donec luctus
-					convallis arcu. <a href="#">Nullam adipiscing</a>,
-					magna porttitor pellentesque ornare, magna tortor dignissim justo, vel fermentum massa neque
-					sit amet urna. Nunc laoreet mi vel augue malesuada, nec pulvinar mi viverra. Cras sed orci
-					pellentesque, porttitor odio nec, convallis
-					odio. Maecenas id tellus enim. Interdum et malesuada fames ac ante ipsum primis in faucibus.
-				</p>
-				<p><a href="#" class="button">Call to Action</a>
-				</p>
-				<h2>Subheader goes here h2</h2>
-				<p>Cras nisl lacus, ultrices vitae eros eget, pulvinar venenatis sem. Nullam quis magna et quam
-					pharetra rutrum in id justo. Nullam consectetu.Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Duis vitae lacinia dui, ac lacinia
-					dolor. Maecenas mattis nulla ac purus mattis, sit amet facilisis dolor luctus. Donec luctus
-					convallis arcu. Nullam adipiscing, magna porttitor pellentesque ornare.</p>
-				<p><a href="#" class="button button-solid">Call to Action</a>
-				</p>
-				<h3>Subheader goes here h3</h3>
-				<p>Cras nisl lacus, ultrices vitae eros eget, pulvinar venenatis sem. Nullam quis magna et quam
-					pharetra rutrum in id justo. Nullam consectetu.Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Duis vitae lacinia dui, ac lacinia
-					dolor. Maecenas mattis nulla ac purus mattis, sit amet facilisis dolor luctus. Donec luctus
-					convallis arcu. Nullam adipiscing, magna porttitor pellentesque ornare.</p>
-				<ul>
-					<li>uis vitae lacinia dui, ac lacinia dolor.
-						<ul>
-							<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-							<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-							<li>
-								uis vitae lacinia dui, ac lacinia dolor.
-								<ul>
-									<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-									<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-									<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-								</ul>
-							</li>
-						</ul>
-					</li>
-					<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-					<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-					<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-				</ul>
-				<ol>
-					<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-					<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-					<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-					<li>uis vitae lacinia dui, ac lacinia dolor.</li>
-				</ol>
-				<p><a href="#" class="button button-bar">Call to Action</a>
-				</p>
-				<h4>Subheader goes here h4</h4>
-				<p>Cras nisl lacus, ultrices vitae eros eget, pulvinar venenatis sem. Nullam quis magna et quam
-					pharetra rutrum in id justo. Nullam consectetu.Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Duis vitae lacinia dui, ac lacinia
-					dolor. Maecenas mattis nulla ac purus mattis, sit amet facilisis dolor luctus. Donec luctus
-					convallis arcu. Nullam adipiscing, magna porttitor pellentesque ornare.</p>
-				<h5>Subheader goes here h5</h5>
-				<p>Cras nisl lacus, ultrices vitae eros eget, pulvinar venenatis sem. Nullam quis magna et quam
-					pharetra rutrum in id justo. Nullam consectetu.Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Duis vitae lacinia dui, ac lacinia
-					dolor. Maecenas mattis nulla ac purus mattis, sit amet facilisis dolor luctus. Donec luctus
-					convallis arcu. Nullam adipiscing, magna porttitor pellentesque ornare.</p>
-				<p><a href="#" class="button button-wide">Wide Call to Action</a>
-				</p>
-				<h6>Subheader goes here h6</h6>
-				<p>Cras nisl lacus, ultrices vitae eros eget, pulvinar venenatis sem. Nullam quis magna et quam
-					pharetra rutrum in id justo. Nullam consectetu.Lorem ipsum dolor sit amet, consectetur
-					adipiscing elit. Duis vitae lacinia dui, ac lacinia
-					dolor. Maecenas mattis nulla ac purus mattis, sit amet facilisis dolor luctus. Donec luctus
-					convallis arcu. Nullam adipiscing, magna porttitor pellentesque ornare.</p>
-			</div>
+			<div class="maincontent col-lg-9 col-md-9 col-sm-9 right"></div>
 			<div class="sidenav col-lg-3 col-md-3 col-sm-3">
 				<ul>
-					<li><a href="purdue-brand.hbs">Content Example 1</a>
-					</li>
-					<li><a href="purdue-templates/templates/content-2.html">Content Example 2</a>
-					</li>
+					<li><a href="purdue-brand.hbs">Content Example 1</a></li>
+					<li><a href="purdue-templates/templates/content-2.html">Content Example 2</a></li>
 					<li class="dropdown-submenu"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Submenu
 						Example<span class="caret"/></a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Place Holder Link 1</a>
-							</li>
-							<li><a href="#">Place Holder Link 2</a>
-							</li>
+							<li><a href="#">Place Holder Link 1</a></li>
+							<li><a href="#">Place Holder Link 2</a></li>
 						</ul>
 					</li>
 				</ul>
 			</div>
 			<div class="sidecontent col-lg-3 col-md-3 col-sm-3">
-				<div class="videoContainer">
-					<div class="video">
-						<iframe title="YouTube Video title" allowfullscreen="" frameborder="0" height="240"
-						        src="https://www.youtube.com/embed/OE02yf5WHF4?rel=0"></iframe>
-					</div>
-				</div>
 				<h4>Identifer text</h4>
 				<p>First sentence of the side content.</p>
 			</div>
@@ -347,18 +100,14 @@
 				<div class="panel-collapse collapse" id="footerone">
 					<div class="panel-body">
 						<ul>
-							<li><a href="https://www.purdue.edu/employeeportal">Employee Portal</a>
-							</li>
+							<li><a href="https://www.purdue.edu/employeeportal">Employee Portal</a></li>
 							<li><a href="http://www.itap.purdue.edu/learning/tools/blackboard/purdue-brand.hbs">Blackboard</a>
 							</li>
 							<li><a href="http://www.purdue.edu/newsroom/purduetoday/purdue-brand.hbs">Purdue Today</a>
 							</li>
-							<li><a href="https://mymail.purdue.edu/purdue-brand.hbs">myMail</a>
-							</li>
-							<li><a href="https://exchange.purdue.edu">Outlook</a>
-							</li>
-							<li><a href="https://wl.mypurdue.purdue.edu">myPurdue</a>
-							</li>
+							<li><a href="https://mymail.purdue.edu/purdue-brand.hbs">myMail</a></li>
+							<li><a href="https://exchange.purdue.edu">Outlook</a></li>
+							<li><a href="https://wl.mypurdue.purdue.edu">myPurdue</a></li>
 						</ul>
 					</div>
 				</div>
@@ -374,16 +123,12 @@
 						<ul>
 							<li>
 								<a href="http://www.purdue.edu/purdue/information_for/for_faculty_staff_re.html">Faculty
-									and Staff</a>
-							</li>
-							<li><a href="http://www.purdue.edu/ais/purdue-brand.hbs">AIS</a>
-							</li>
-							<li><a href="https://www.purdue.edu/physicalfacilities/purdue-brand.hbs">Physical Facilities</a>
-							</li>
-							<li><a href="https://www.itap.purdue.edu/directory/purdue-brand.hbs">Directory</a>
-							</li>
-							<li><a href="https://www.purdue.edu/campus_map/purdue-brand.hbs">Campus Map</a>
-							</li>
+									and Staff</a></li>
+							<li><a href="http://www.purdue.edu/ais/purdue-brand.hbs">AIS</a></li>
+							<li><a href="https://www.purdue.edu/physicalfacilities/purdue-brand.hbs">Physical
+								Facilities</a></li>
+							<li><a href="https://www.itap.purdue.edu/directory/purdue-brand.hbs">Directory</a></li>
+							<li><a href="https://www.purdue.edu/campus_map/purdue-brand.hbs">Campus Map</a></li>
 							<li><a href="https://www.purdue.edu/physicalfacilities/constructionmap/index.html">Construction</a>
 							</li>
 						</ul>
@@ -402,14 +147,10 @@
 							<li><a href="http://www.itap.purdue.edu/learning/tools/blackboard/purdue-brand.hbs">Blackboard</a>
 							</li>
 							<li><a href="http://www.purdue.edu/ehps/purdue-brand.hbs">Environmental Health &amp; Public
-								Safety</a>
-							</li>
-							<li><a href="https://www.lib.purdue.edu/purdue-brand.hbs">Libraries</a>
-							</li>
-							<li><a href="https://www.itap.purdue.edu/purdue-brand.hbs">ITaP</a>
-							</li>
-							<li><a href="https://www.purdue.edu/hr/CHL/index.html">Center for Healthy Living</a>
-							</li>
+								Safety</a></li>
+							<li><a href="https://www.lib.purdue.edu/purdue-brand.hbs">Libraries</a></li>
+							<li><a href="https://www.itap.purdue.edu/purdue-brand.hbs">ITaP</a></li>
+							<li><a href="https://www.purdue.edu/hr/CHL/index.html">Center for Healthy Living</a></li>
 						</ul>
 					</div>
 				</div>
@@ -423,17 +164,13 @@
 				<div class="panel-collapse collapse" id="footerfour">
 					<div class="panel-body">
 						<ul>
-							<li><a href="http://www.purdueofficialstore.com/">Shop</a>
-							</li>
-							<li><a href="http://www.purdue.edu/ethics/clery.html">Clery Reporting Act</a>
-							</li>
+							<li><a href="http://www.purdueofficialstore.com/">Shop</a></li>
+							<li><a href="http://www.purdue.edu/ethics/clery.html">Clery Reporting Act</a></li>
 							<li><a href="https://www.purdue.edu/bursar/tuition/calculator/purdue-brand.hbs">Tuition
-								Calculator</a>
-							</li>
+								Calculator</a></li>
 							<li><a href="https://www.purdue.edu/ethics/purdue-brand.hbs">Ethics &amp; Compliance</a>
 							</li>
-							<li><a href="http://www.purdue.edu/hotline/purdue-brand.hbs">Speak Up</a>
-							</li>
+							<li><a href="http://www.purdue.edu/hotline/purdue-brand.hbs">Speak Up</a></li>
 						</ul>
 					</div>
 				</div>
@@ -475,7 +212,8 @@
 						NAME HERE</a>
 				</p>
 				<p>Trouble with this page? Disability-related <a
-						href="http://www.purdue.edu/disabilityresources/purdue-brand.hbs">accessibility</a> issue? Please
+						href="http://www.purdue.edu/disabilityresources/purdue-brand.hbs">accessibility</a> issue?
+					Please
 					contact&nbsp;us at <a href="mailto:online@purdue.edu">organization-email@purdue.edu</a>.</p>
 			</div>
 		</div>

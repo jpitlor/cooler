@@ -4,58 +4,115 @@
 	"version": "1.0",
 	"manifest_version": 2,
 	"web_accessible_resources": [
+		"vendor/*",
 		"templates/*",
-		"theme.hbs",
+		"theme/*",
 		"favicon.ico"
 	],
 	"content_scripts": [
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/Individual/ShowIndividualPage.aspx*"],
-			"js": ["pages/home.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/Individual/ShowIndividualPage.aspx*"
+			],
+			"js": [
+				"pages/home.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/StudentOrganization/ShowStudentOrganizationWVendorPage.aspx*"],
-			"js": ["pages/club.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/StudentOrganization/ShowStudentOrganizationWVendorPage.aspx*"
+			],
+			"js": [
+				"pages/club.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWActWVendorPage.aspx*"],
-			"js": ["pages/banking.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWActWVendorPage.aspx*"
+			],
+			"js": [
+				"pages/banking.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWECommercePage.aspx*"],
-			"js": ["pages/store.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWECommercePage.aspx*"
+			],
+			"js": [
+				"pages/store.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html"],
-			"js": ["pages/browser-support.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html"
+			],
+			"js": [
+				"pages/browser-support.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/Individual/EditIndividualPage.aspx*"],
-			"js": ["pages/edit-individual.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/Individual/EditIndividualPage.aspx*"
+			],
+			"js": [
+				"pages/edit-individual.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/ECOrder/ItemCheckIn.aspx"],
-			"js": ["pages/ecommerce-check-in.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/ECOrder/ItemCheckIn.aspx"
+			],
+			"js": [
+				"pages/ecommerce-check-in.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/StudentOrganization/EditStudentOrganizationPage.aspx*"],
-			"js": ["pages/edit-club.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/StudentOrganization/EditStudentOrganizationPage.aspx*"
+			],
+			"js": [
+				"pages/edit-club.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/Vendor/AddVendorCheckNamePage.aspx"],
-			"js": ["pages/add-payee.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/Vendor/AddVendorCheckNamePage.aspx"
+			],
+			"js": [
+				"pages/add-payee.js"
+			]
 		},
 		{
-			"matches": ["https://www.coolfaces.net/COOLPUWL/TransactionHeader/QAddProcessTransactionHeaderPage.aspx*"],
-			"js": ["pages/add-payment.js"]
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/TransactionHeader/QAddProcessTransactionHeaderPage.aspx*"
+			],
+			"js": [
+				"pages/add-payment.js"
+			]
 		}
 	],
 	"background": {
-		"scripts": ["inject-theme.js"],
+		"scripts": [
+			"theme/inject-theme.js"
+		],
 		"persistent": false
+	},
+	"page_action": {
+		"default_title": "COOLer",
+		"default_popup": "theme/about.html",
+		"default_icon": {
+			"16": "favicon.ico",
+			"48": "favicon.ico",
+			"128": "favicon.ico"
+		}
+	},
+	"icons": {
+		"16": "favicon.ico",
+		"48": "favicon.ico",
+		"128": "favicon.ico"
 	},
 	"permissions": [
 		"activeTab",
-		"*://www.coolfaces.net/*"
+		"*://*/*"
 	]
 }

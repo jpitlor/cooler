@@ -1,0 +1,18 @@
+/*nav, .card, .list-group {*/
+    /*margin-bottom: 1em;*/
+/*}*/
+
+/*.navbar-nav .navbar-text {*/
+    /*color: #FFFFFF;*/
+/*}*/
+
+/*.jumbotron {*/
+    /*margin-top: 1em;*/
+/*}*/
+
+/* TooCOOL's URLs are really long */
+#club-information {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+}
