@@ -1,6 +1,13 @@
-fetch(chrome.extension.getURL('/vendor/purdue-brand.hbs'))
-	.then(r => r.text())
-	.then(d => injectHeader(Handlebars.compile(d)));
+chrome.storage.sync.get({
+	theme: 'purdue'
+}, function(items) {
+	const {theme} = items;
+
+	chrome.tabs.insertCSS({file: `/vendor/${theme}-bootstrap.min.css`});
+	fetch(chrome.extension.getURL(`/skeleton/${theme}.hbs`))
+		.then(r => r.text())
+		.then(d => injectHeader(Handlebars.compile(d)));
+});
 
 function injectHeader(template) {
 	const isBrowserPage = window.location.href === "https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html";

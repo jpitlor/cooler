@@ -7,7 +7,7 @@
 		"vendor/*",
 		"templates/*",
 		"theme/*",
-		"favicon.ico"
+		"icons/*"
 	],
 	"content_scripts": [
 		{
@@ -15,7 +15,7 @@
 				"https://www.coolfaces.net/COOLPUWL/Individual/ShowIndividualPage.aspx*"
 			],
 			"js": [
-				"pages/home.js"
+				"content-scripts/home.js"
 			]
 		},
 		{
@@ -23,7 +23,7 @@
 				"https://www.coolfaces.net/COOLPUWL/StudentOrganization/ShowStudentOrganizationWVendorPage.aspx*"
 			],
 			"js": [
-				"pages/club.js"
+				"content-scripts/club.js"
 			]
 		},
 		{
@@ -31,7 +31,7 @@
 				"https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWActWVendorPage.aspx*"
 			],
 			"js": [
-				"pages/banking.js"
+				"content-scripts/banking.js"
 			]
 		},
 		{
@@ -39,15 +39,15 @@
 				"https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWECommercePage.aspx*"
 			],
 			"js": [
-				"pages/store.js"
+				"content-scripts/store.js"
 			]
 		},
 		{
 			"matches": [
-				"https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html"
+				"https://www.coolfaces.net/COOLPUWL/Mycontent-scripts/Browsers.html"
 			],
 			"js": [
-				"pages/browser-support.js"
+				"content-scripts/browser-support.js"
 			]
 		},
 		{
@@ -55,7 +55,7 @@
 				"https://www.coolfaces.net/COOLPUWL/Individual/EditIndividualPage.aspx*"
 			],
 			"js": [
-				"pages/edit-individual.js"
+				"content-scripts/edit-individual.js"
 			]
 		},
 		{
@@ -63,7 +63,7 @@
 				"https://www.coolfaces.net/COOLPUWL/ECOrder/ItemCheckIn.aspx"
 			],
 			"js": [
-				"pages/ecommerce-check-in.js"
+				"content-scripts/ecommerce-check-in.js"
 			]
 		},
 		{
@@ -71,7 +71,7 @@
 				"https://www.coolfaces.net/COOLPUWL/StudentOrganization/EditStudentOrganizationPage.aspx*"
 			],
 			"js": [
-				"pages/edit-club.js"
+				"content-scripts/edit-club.js"
 			]
 		},
 		{
@@ -79,7 +79,7 @@
 				"https://www.coolfaces.net/COOLPUWL/Vendor/AddVendorCheckNamePage.aspx"
 			],
 			"js": [
-				"pages/add-payee.js"
+				"content-scripts/add-payee.js"
 			]
 		},
 		{
@@ -87,7 +87,7 @@
 				"https://www.coolfaces.net/COOLPUWL/TransactionHeader/QAddProcessTransactionHeaderPage.aspx*"
 			],
 			"js": [
-				"pages/add-payment.js"
+				"content-scripts/add-payment.js"
 			]
 		}
 	],
@@ -97,22 +97,23 @@
 		],
 		"persistent": false
 	},
-	"page_action": {
+	"options_ui": {
+		"page": "options/options.html",
+		"open_in_tab": false
+	},
+	"browser_action": {
 		"default_title": "COOLer",
-		"default_popup": "theme/about.html",
+		"default_popup": "about/about.html",
 		"default_icon": {
-			"16": "favicon.ico",
-			"48": "favicon.ico",
-			"128": "favicon.ico"
+			"16": "icons/favicon.png"
 		}
 	},
 	"icons": {
-		"16": "favicon.ico",
-		"48": "favicon.ico",
-		"128": "favicon.ico"
+		"16": "icons/favicon.png"
 	},
 	"permissions": [
 		"activeTab",
+		"storage",
 		"*://*/*"
 	]
 }
