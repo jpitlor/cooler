@@ -93,7 +93,7 @@
 	],
 	"background": {
 		"scripts": [
-			"theme/inject-theme.js"
+			"theme/theme.js"
 		],
 		"persistent": false
 	},
@@ -113,6 +113,7 @@
 	},
 	"permissions": [
 		"activeTab",
+		"tabs",
 		"storage",
 		"*://*/*"
 	]
