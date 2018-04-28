@@ -1,9 +1,13 @@
 chrome.runtime.sendMessage({from: 'cooler-content-script'});
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
-	if (request.from === 'cooler-theme-injected') {
-		fetch(chrome.extension.getURL('/templates/home.hbs'))
-			.then(r => r.text())
-			.then(d => inject(Handlebars.compile(d)));
+	if (request.from === 'cooler-content-script') {
+		chrome.storage.sync.get({
+			theme: 'purdue'
+		}, function({theme}) {
+			fetch(chrome.extension.getURL('/templates/home.hbs'))
+				.then(r => r.text())
+				.then(d => inject(Handlebars.compile(d)));
+		})
 	}
 });
 
@@ -22,12 +26,13 @@ function inject(template) {
 		content: $myOrgs.slice(1).map(c => Array.from(c.children)).map(c => c.map(e => e.innerHTML))
 	};
 
-	const body = $('body > form > table');
-	body.remove();
-	$('.navbar-nav')[0].children[0].className += " active";
+	const $table = $('body > form > table');
+	$table.remove();
+	// $('.navbar-nav')[0].children[0].className += " active";
 	$('.maincontent').append(template({announcements, myInfo, orgs}));
+	// $('body > form').appendTo($('.maincontent'));
 
-	const $theirButtons = $('input', body);
+	const $theirButtons = $('input', $table);
 	$('.btn').each(function(i) {
 		$(this).on('click', function() {
 			$theirButtons[i].click();
