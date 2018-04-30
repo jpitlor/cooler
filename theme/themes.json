@@ -1,0 +1,8 @@
+{
+	"material": {
+		"materialStyle": true
+	},
+	"purdue": {
+		"materialStyle": false
+	}
+}

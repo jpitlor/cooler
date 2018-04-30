@@ -1,11 +1,13 @@
-<h1>Organizations</h1>
+{{#unless theme.materialStyle}}<h1>Organizations</h1>{{/unless}}
 <div class="row">
 	<div class="card col-md mx-3">
 		<div class="card-body">
 			<h5 class="card-title">Reminders</h5>
-			<ul class="list-group">
+			<ul {{#if theme.materialStyle}}class="list-group"{{/if}}>
 				{{#each announcements}}
-					<li class="list-group-item">{{this}}</li>
+					<li class="{{#if ../theme.materialStyle}}list-group-item{{/if}}">
+						{{this}}
+					</li>
 				{{/each}}
 			</ul>
 		</div>
@@ -14,14 +16,14 @@
 	<div class="card col-md mx-3">
 		<div class="card-body">
 			<h5 class="card-title">Your Information</h5>
-			<ul class="list-group">
+			<ul {{#if theme.materialStyle}}class="list-group"{{/if}}>
 				{{#each myInfo}}
-					<li class="list-group-item">
+					<li {{#if ../theme.materialStyle}}class="list-group-item"{{/if}}>
 						<strong>{{@key}}:</strong> {{this}}
 					</li>
 				{{/each}}
 			</ul>
-			<a class="btn btn-raised btn-secondary">Edit</a>
+			<button class="btn btn-raised btn-secondary">Edit</button>
 		</div>
 	</div>
 </div>

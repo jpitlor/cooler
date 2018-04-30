@@ -1,0 +1,11 @@
+nav, .card, .list-group {
+    margin-bottom: 1em;
+}
+
+.navbar-nav .navbar-text {
+    color: #FFFFFF;
+}
+
+.jumbotron {
+    margin-top: 1em;
+}
