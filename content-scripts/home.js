@@ -1,7 +1,6 @@
 chrome.runtime.sendMessage({from: 'cooler-content-script'});
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	if (request.from === 'cooler-theme-injected') {
-		console.log(request);
 		fetch(chrome.extension.getURL('/templates/home.hbs'))
 			.then(r => r.text())
 			.then(d => inject(Handlebars.compile(d), request.theme));
@@ -26,7 +25,6 @@ function inject(template, theme) {
 	const $table = $('body > form > table');
 	$table.remove();
 	// $('.navbar-nav')[0].children[0].className += " active";
-	console.log(theme);
 	$('.maincontent').append(template({announcements, myInfo, orgs, theme}));
 
 	const $theirButtons = $('input', $table);

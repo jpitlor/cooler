@@ -20,6 +20,7 @@ function inject(template) {
 	});
 
 	$('.WordSection1').remove();
-	$('.navbar-nav')[0].children[1].className += " active";
-	$('body').append(template({browsers}));
+	// $('.navbar-nav')[0].children[1].className += " active";
+	let contents = template({browsers});
+	$('.maincontent').append(contents);
 }

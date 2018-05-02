@@ -3,10 +3,28 @@
 </div>
 <div class="navbar goldbar" role="navigation">
 	<div class="container">
-		<div class="collapse navbar-collapse right gold">
+		<div class="navbar-header">
+			<button class="left navbar-toggle" data-target=".gold" data-toggle="collapse" type="button">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				Quick Links
+			</button>
+		</div>
+		<div class="collapse navbar-collapse gold">
+			<ul class="nav navbar-nav information">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Helpful Links <b class="caret"></b></a>
+					<ul class="dropdown-menu">
+						<li><a href="http://www.purdue.edu/sao">SAO</a></li>
+						<li><a href="http://www.purdue.edu/boso">BOSO</a></li>
+						<li><a href="http://boilerlink.purdue.edu">Boilerlink</a></li>
+					</ul>
+				</li>
+			</ul>
 			<ul class="nav navbar-nav right quicklinks">
 				<!-- TODO put this in with handlebars -->
-				<li><a href="#">Logged in as Jordan</a></li>
+				<li><a href="#" id="header-name">Hello, Jordan</a></li>
 				<li><a href="javascript:__doPostBack('PageHeader$_SignIn','')">Log Out</a></li>
 			</ul>
 		</div>
@@ -17,7 +35,7 @@
 	<div class="container">
 		<div class="row row-eq-height">
 			<div class="logo col-lg-2 col-md-3 col-sm-3 col-xs-12">
-				<a class="svgLinkContainer" href="https://www.purdue.edu">
+				<a class="svgLinkContainer" href="/COOLPUWL">
 					<object class="svgContainer" type="image/svg+xml"
 					        data="https://www.purdue.edu/purdue/images/logo.svg" tabindex="-1">
 						<img alt="Purdue University" src="https://www.purdue.edu/purdue/images/logo.png"/>
@@ -25,8 +43,8 @@
 				</a>
 			</div>
 			<div class="department col-lg-10 col-md-9 col-sm-9 col-xs-12">
-				<a href="index.html">Central Office Online</a>
-				<span class="tagline"><a href="#">Business Office for Student Organizations</a></span>
+				<a href="/COOLPUWL">Central Office Online</a>
+				<span class="tagline"><a href="http://purdue.edu/boso">Business Office for Student Organizations</a></span>
 			</div>
 		</div>
 	</div>
@@ -44,7 +62,7 @@
 		</div>
 		<div class="collapse navbar-collapse black">
 			<ul class="nav navbar-nav">
-				<li class="first"><a href="/COOLPUWL/Individual/ShowIndividualPage.aspx">Clubs</a></li>
+				<li class="first"><a href="/COOLPUWL/">Home</a></li>
 				<li class="dropdown"><a href="/COOLPUWL/MyPages/Browsers.html">Browser Support</a></li>
 				<li class="dropdown"><a data-toggle="modal" data-target="#aboutModal" href="#">About</a></li>
 			</ul>
@@ -207,14 +225,12 @@
 						href="http://www.purdue.edu/purdue/ea_eou_statement.html">An equal access/equal
 					opportunity university</a> | <a href="http://www.purdue.edu/securepurdue/DMCAAgent.cfm">Copyright
 					Complaints</a> |
-					<a
-							href="http://www.purdue.edu/marketing" target="_blank">Maintained by ORGANIZATION
-						NAME HERE</a>
+					<a href="jordanpitlor.com" target="_blank">Maintained by Jordan Pitlor</a>
 				</p>
 				<p>Trouble with this page? Disability-related <a
 						href="http://www.purdue.edu/disabilityresources/purdue-brand.hbs">accessibility</a> issue?
 					Please
-					contact&nbsp;us at <a href="mailto:online@purdue.edu">organization-email@purdue.edu</a>.</p>
+					contact&nbsp;us at <a href="mailto:online@purdue.edu">jordan@jordanpitlor.com</a>.</p>
 			</div>
 		</div>
 	</div>

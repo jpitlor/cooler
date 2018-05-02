@@ -45,7 +45,7 @@
 		},
 		{
 			"matches": [
-				"https://www.coolfaces.net/COOLPUWL/Mycontent-scripts/Browsers.html"
+				"https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html"
 			],
 			"js": [
 				"content-scripts/browser-support.js"

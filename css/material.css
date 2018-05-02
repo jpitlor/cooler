@@ -9,3 +9,14 @@ nav, .card, .list-group {
 .jumbotron {
     margin-top: 1em;
 }
+
+#copyright {
+    color: #9E9E9E;
+}
+
+#change-theme {
+    text-decoration: none;
+    color: #0069C0;
+    border-bottom: 1px solid #0069C0;
+    cursor: pointer;
+}

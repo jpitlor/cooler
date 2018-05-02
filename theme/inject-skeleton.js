@@ -24,3 +24,7 @@ function injectHeader(template, theme) {
 
 	chrome.runtime.sendMessage({from: 'cooler-theme-injected', theme});
 }
+
+function finishHeader(activeTab = 0, breadcrumbs = null, sidebar = null) {
+
+}

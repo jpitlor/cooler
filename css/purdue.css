@@ -1,0 +1,4 @@
+#header-name {
+    cursor: default;
+    text-decoration: none !important; /* We need !important for the hover. Something was overriding it */
+}

@@ -9,23 +9,86 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 
 function inject(template) {
 	let $keys = Array.from($('.dBody .fls'));
-	let $accountInfo = Array.from($('.dBody .dfv'))
+	const info = Array.from($('.dBody .dfv'))
 		.reduce((p, c, i) => /[A-Za-z0-9]+/.exec(c.textContent) ? {
 			...p,
 			[$keys[i].textContent]: c.textContent
 		} : p, {});
-	const $tables = $('.tre'); // this has to be here for efficiency
+	
+	const $tables = $('.tre');
+	const paymentsIPData = Array.from($('table > tbody > tr', $tables[0])).map(r => Array.from(r.cells));
+	const paymentsData = Array.from($('table > tbody > tr', $tables[1])).map(r => Array.from(r.cells));
+	const depositsData = Array.from($('table > tbody > tr', $tables[2])).map(r => Array.from(r.cells));
+	const transfersData = Array.from($('table > tbody > tr', $tables[3])).map(r => Array.from(r.cells));
+	const activitiesData = Array.from($('table > tbody > tr', $tables[4])).map(r => Array.from(r.cells));
+	const payeesData = Array.from($('table > tbody > tr', $tables[5])).map(r => Array.from(r.cells));
+	const unattachedDocsData = Array.from($('table > tbody > tr', $tables[6])).map(r => Array.from(r.cells));
+	
+	const paymentsIP = {
+		headers: Array.from(paymentsIPData[0])
+			.map(e => e.childNodes[0].textContent)
+			.filter((v, i) => [1, 3, 4].includes(i)),
+		content: paymentsIPData.slice(1).map(e => e
+			.map(c => c.innerText)
+			.filter((v, i) => [1, 3, 4].includes(i)))
+	};
+	const payments = {
+		headers: Array.from(paymentsData[0])
+			.map(e => e.childNodes[0].textContent)
+			.filter((v, i) => [1, 2, 4].includes(i)),
+		content: paymentsData.slice(1).map(e => e
+			.map(c => c.innerText)
+			.filter((v, i) => [1, 2, 4].includes(i)))
+	};
+	const deposits = {
+		headers: Array.from(depositsData[0])
+			.map(e => e.childNodes[0].textContent)
+			.filter((v, i) => [0, 1, 3].includes(i)),
+		content: depositsData.slice(1).map(e => e
+			.map(c => c.innerText)
+			.filter((v, i) => [0, 1, 3].includes(i)))
+	};
+	const transfers = {
+		headers: Array.from(transfersData[0])
+			.map(e => e.childNodes[0].textContent)
+			.filter((v, i) => [0, 2, 3, 5].includes(i)),
+		content: transfersData.slice(1).map(e => e
+			.map(c => c.innerText)
+			.filter((v, i) => [0, 2, 3, 5].includes(i)))
+	};
+	const activities = {
+		headers: Array.from(activitiesData[0])
+			.map(e => e.childNodes[0].textContent)
+			.filter((v, i) => [1, 2, 4, 5, 8].includes(i)),
+		content: activitiesData.slice(1).map(e => e
+				.map(c => c.innerText)
+				.filter((v, i) => [1, 2, 4, 5, 8].includes(i)))
+			.filter(t => t.length > 1)
+	};
+	const payees = {
+		headers: Array.from(payeesData[0])
+			.map(e => e.childNodes[0].textContent)
+			.filter((v, i) => [1, 5].includes(i)),
+		content: payeesData
+			.slice(1)
+			.map(e => e
+				.map(c => c.innerText)
+				.filter((v, i) => [3, 7].includes(i)))
+	};
+	const unattachedDocs = {
+		headers: Array.from(unattachedDocsData[0])
+			.map(e => e.childNodes[0].textContent)
+			.filter((v, i) => [5, 6, 7, 8].includes(i)),
+		content: unattachedDocsData
+			.slice(1)
+			.map(e => e
+				.map(c => c.innerText)
+				.filter((v, i) => [5, 6, 7, 8].includes(i)))
+	};
 
 	$('body > form > table').hide();
 	$('body > form').append(template({
-		info: $accountInfo,
-		paymentsIP: getTable(0, $tables),
-		payments: getTable(1, $tables),
-		deposits: getTable(2, $tables),
-		transfers: getTable(3, $tables),
-		activities: getTable(4, $tables),
-		payees: getTable(5, $tables),
-		unattachedDocs: getTable(6, $tables)
+		info, paymentsIP, payments, deposits, transfers, activities, payees, unattachedDocs
 	}));
 
 	const $theirButtons = $('.prbbc input');
@@ -34,23 +97,4 @@ function inject(template) {
 			$theirButtons[i].click()
 		});
 	});
-}
-
-function getTable(i, $tables) {
-	const table = Array.from($('table > tbody > tr', $tables[i])).map(r => Array.from(r.cells));
-
-	if (i === 4) return {
-		headers: Array.from(table[0]).map(e => e.childNodes[0].textContent).slice(1),
-		content: table.slice(1).map(e => e.slice(1).map(c => c.innerText)).filter(t => t.length > 1)
-	};
-
-	if (i === 5) return {
-		headers: Array.from(table[0]).map(e => e.childNodes[0].textContent),
-		content: table.slice(1).map(e => e.slice(2).map(c => c.innerText))
-	};
-
-	return {
-		headers: Array.from(table[0]).map(e => e.childNodes[0].textContent),
-		content: table.slice(1).map(e => e.map(c => c.innerText))
-	};
 }

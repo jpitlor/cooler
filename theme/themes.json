@@ -1,8 +1,10 @@
 {
 	"material": {
-		"materialStyle": true
+		"materialStyle": true,
+		"hasSideBar": false
 	},
 	"purdue": {
-		"materialStyle": false
+		"materialStyle": false,
+		"hasSideBar": true
 	}
 }

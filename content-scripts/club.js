@@ -44,11 +44,13 @@ function inject(template) {
 	};
 	const payees = {
 		// headers: cherryPick(Array.from(payeesData[0]).map(e => e.childNodes[0].textContent), [1, 5]),
-		headers: Array.from(payeesData[0]).map(e => e.childNodes[0].textContent),
+		headers: Array.from(payeesData[0])
+			.filter((v, i) => [1, 5].includes(i))
+			.map(e => e.childNodes[0].textContent),
 		content: payeesData
 			.slice(1)
 			.map(e => e
-				// .map(f => cherryPick(f, [3, 7]))
+				.filter((v, i) => [3, 7].includes(i))
 				.map(f => f.innerText))
 	};
 	const documents = {
@@ -58,10 +60,14 @@ function inject(template) {
 			.map(e => e.map(f => f.innerText))
 	};
 
-	$('body > form > table').hide();
-	$('body > form').append(template({announcements, info, accounts, individuals, payees, documents}));
-}
+	let $table = $('body > form > table');
+	$table.remove();
+	$('.maincontent').append(template({announcements, info, accounts, individuals, payees, documents}));
 
-// function cherryPick(array, indices) {
-// 	return indices.reduce((acc, curr) => acc.concat(array[curr]), []);
-// }
+	const $theirButtons = $('input', $table);
+	$('.btn').each(function(i) {
+		$(this).on('click', function() {
+			$theirButtons[i].click();
+		})
+	});
+}
