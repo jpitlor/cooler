@@ -1,0 +1,444 @@
+<div class="row">
+	<div class="card col-md mx-3">
+		<div class="card-body">
+			<h5 class="card-title">Account Information</h5>
+			<ul class="list-group">
+				{{#each info}}
+					<li class="list-group-item">
+						<strong>{{@key}}: </strong>{{this}}
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+	</div>
+
+	<div class="card col-md mx-3">
+		<div class="card-body">
+			<h5 class="card-title">Orders in Progress</h5>
+			<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+				<div class="btn-group mr-2" role="group" aria-label="Export">
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-file-pdf"></i>
+					</button>
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-file-word"></i>
+					</button>
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-file-excel"></i>
+					</button>
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-file-alt"></i>
+					</button>
+				</div>
+				<div class="btn-group mr-2" role="group" aria-label="Add">
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-sync"></i>
+					</button>
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-filter"></i>
+					</button>
+				</div>
+			</div>
+			<table class="table table-hover">
+				<thead class="thead-light">
+					{{#each ordersIP.headers}}
+						<th scope="col">{{this}}</th>
+					{{/each}}
+				</thead>
+				<tbody>
+					{{#each ordersIP.content}}
+						<tr>
+							{{#each this}}
+								<td>{{{this}}}</td>
+							{{/each}}
+						</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Fulfilled Orders</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<div class="btn-group mr-2" role="group" aria-label="Export">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-pdf"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-word"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-excel"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-alt"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each fulfilledOrders.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each fulfilledOrders.content}}
+					<tr>
+						{{#each this}}
+							<td>{{this}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Catalog Items in Process</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-plus"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Export">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-pdf"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-word"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-excel"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-alt"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each catalogItemsIP.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each catalogItemsIP.content}}
+					<tr>
+						{{#each this}}
+							<td>{{{this}}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Catalog Items</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<button type="button" class="btn bmd-btn-icon" style="display: none">
+				<!-- Placeholder to keep indexes correct -->
+			</button>
+			<div class="btn-group mr-2" role="group" aria-label="Export">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-pdf"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-word"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-excel"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-alt"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each catalogItems.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each catalogItems.content}}
+					<tr>
+						{{#each this}}
+							<td>{{{this}}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Serialized</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each serialized.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each serialized.content}}
+					<tr>
+						{{#each this}}
+							<td>{{this}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Certificates</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each certificates.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each certificates.content}}
+					<tr>
+						{{#each this}}
+							<td>{{this}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Shopping Cart</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<div class="btn-group mr-2" role="group" aria-label="Export">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-pdf"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-word"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-excel"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-alt"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each shoppingCart.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each shoppingCart.content}}
+					<tr>
+						{{#each this}}
+							<td>{{this}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Member Requests</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<div class="btn-group mr-2" role="group" aria-label="Export">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-pdf"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-word"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-excel"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-alt"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each memberRequests.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each memberRequests.content}}
+					<tr>
+						{{#each this}}
+							<td>{{this}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Members</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-plus"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-file-pdf"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each members.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each members.content}}
+					<tr>
+						{{#each this}}
+							<td>{{this}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="card">
+	<div class="card-body">
+		<h5 class="card-title">Unattached Documents</h5>
+		<div class="btn-toolbar" role="toolbar" aria-label="Buttons">
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-plus"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-trash"></i>
+				</button>
+			</div>
+			<div class="btn-group mr-2" role="group" aria-label="Add">
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-sync"></i>
+				</button>
+				<button type="button" class="btn bmd-btn-icon">
+					<i class="fal fa-filter"></i>
+				</button>
+			</div>
+		</div>
+		<table class="table table-hover">
+			<thead class="thead-light">
+				{{#each unattachedDocs.headers}}
+					<th scope="col">{{this}}</th>
+				{{/each}}
+			</thead>
+			<tbody>
+				{{#each unattachedDocs.content}}
+					<tr>
+						{{#each this}}
+							<td>{{this}}</td>
+						{{/each}}
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	</div>
+</div>

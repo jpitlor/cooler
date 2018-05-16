@@ -18,17 +18,22 @@ function inject(template, theme) {
 			[$keys[i].textContent]: c.textContent
 		}) : p, {});
 	const orgs = {
-		columns: Array.from($myOrgs[0].children).map(c => c.childNodes[0].textContent),
-		content: $myOrgs.slice(1).map(c => Array.from(c.children)).map(c => c.map(e => e.innerHTML))
+		columns: Array.from($myOrgs[0].children)
+			.filter((v, i) => [0, 1, 3, 4].includes(i))
+			.map(c => c.childNodes[0].textContent),
+		content: $myOrgs.slice(1)
+			.map(c => Array.from(c.children)
+				.filter((v, i) => [0, 1, 3, 4].includes(i))
+				.map(e => e.innerHTML))
 	};
 
 	const $table = $('body > form > table');
-	$table.remove();
+	$table.hide();
 	// $('.navbar-nav')[0].children[0].className += " active";
 	$('.maincontent').append(template({announcements, myInfo, orgs, theme}));
 
-	const $theirButtons = $('input', $table);
-	$('.btn').each(function(i) {
+	const $theirButtons = $('input', $table).slice(1);
+	$('.btn').slice(1).each(function(i) {
 		$(this).on('click', function() {
 			$theirButtons[i].click();
 		})

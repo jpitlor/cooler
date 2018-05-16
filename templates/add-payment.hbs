@@ -1,41 +1,70 @@
 <div class="container">
-    <form>
-        <h1>Add a Payment</h1>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Payee</h5>
-                <strong>Payment Date: </strong>{{todayDate}}
-                <!-- Payee -->
-                    <!-- Student org? -->
-                    <!-- Search -->
-                    <!-- Add -->
-                    <!-- Select -->
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="hold-for-pickup">
-                    <label class="form-check-label" for="hold-for-pickup">Hold for Pickup</label>
-                </div>
-                <div class="form-group">
-                    <label for="check-memo">Check Memo</label>
-                    <input type="text" class="form-control" id="check-memo" placeholder="Enter Memo">
-                </div>
-                <!-- Note -->
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Expenses</h5>
-                <!-- Add -->
-                <!-- Copy -->
-                <!-- Delete -->
-                <!-- Expenses -->
-                    <!-- Delete -->
-                    <!-- Select -->
-                    <!-- Name -->
-                    <!-- Date -->
-                    <!-- Expense Code -->
-                    <!-- Amount -->
-                    <!-- Note -->
-            </div>
-        </div>
-    </form>
+	<form>
+		<!--<h1>Add a Payment</h1>-->
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Payee</h5>
+				<div class="form-group">
+					<div class="input-group-prepend">
+						<label class="input-group-text" for="today-date">Date</label>
+					</div>
+					<input type="date" class="form-control" value="{{todayDate}}" id="today-date" readonly />
+				</div>
+				<div class="form-group">
+					<label for="payee">Payee: </label>
+					<input type="text" class="form-control" placeholder="Select Payee" readonly>
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" type="button">Select</button>
+					</div>
+				</div>
+				<!-- Payee -->
+				<!-- Student org? -->
+				<!-- Search -->
+				<!-- Add -->
+				<!-- Select -->
+				<div class="form-check form-group">
+					<input type="checkbox" class="form-check-input" id="hold-for-pickup">
+					<label class="form-check-label" for="hold-for-pickup">Hold for Pickup</label>
+				</div>
+				<div class="form-group">
+					<label for="check-memo">Check Memo: </label>
+					<input type="text" class="form-control" id="check-memo" placeholder="Enter Memo">
+				</div>
+				<div class="form-group">
+					<label for="note">Note</label>
+					<textarea class="form-control" id="note"></textarea>
+				</div>
+				<!-- Note -->
+			</div>
+		</div>
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Add Activities</h5>
+				<div class="btn-group" role="group" aria-label="Activity Options">
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-plus"></i>
+					</button>
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-copy"></i>
+					</button>
+					<button type="button" class="btn bmd-btn-icon">
+						<i class="fal fa-minus"></i>
+					</button>
+				</div>
+				<table class="table table-hover">
+					<thead class="thead-light">
+						<th scope="col"></th>
+						<th scope="col">Name</th>
+						<th scope="col">Date</th>
+						<th scope="col">Expense Code</th>
+						<th scope="col">Amount</th>
+						<th scope="col">Note</th>
+					</thead>
+					<tbody id="activities">
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</form>
 </div>

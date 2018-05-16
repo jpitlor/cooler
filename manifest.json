@@ -37,14 +37,6 @@
 		},
 		{
 			"matches": [
-				"https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWECommercePage.aspx*"
-			],
-			"js": [
-				"content-scripts/store.js"
-			]
-		},
-		{
-			"matches": [
 				"https://www.coolfaces.net/COOLPUWL/MyPages/Browsers.html"
 			],
 			"js": [
@@ -64,7 +56,7 @@
 				"https://www.coolfaces.net/COOLPUWL/ECOrder/ItemCheckIn.aspx"
 			],
 			"js": [
-				"content-scripts/ecommerce-check-in.js"
+				"content-scripts/e-commerce-check-in.js"
 			]
 		},
 		{
@@ -89,6 +81,14 @@
 			],
 			"js": [
 				"content-scripts/add-payment.js"
+			]
+		},
+		{
+			"matches": [
+				"https://www.coolfaces.net/COOLPUWL/StudentOrganizationAccounts/ShowStudentOrganizationAccountsWECommercePage.aspx*"
+			],
+			"js": [
+				"content-scripts/e-commerce.js"
 			]
 		}
 	],

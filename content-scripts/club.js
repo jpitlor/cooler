@@ -11,11 +11,6 @@ function inject(template) {
 	const $keys = Array.from($('.dBody .fls'));
 	const $tabs = $('.tre');
 
-	const individualsData = Array.from($('table > tbody tr', $tabs[1]))
-		.map(r => Array.from(r.cells))
-		.filter(a => a.length > 1);
-	const payeesData = Array.from($('table > tbody tr', $tabs[2]))
-		.map(r => Array.from(r.cells));
 	const documentsData = Array.from($('table > tbody tr', $tabs[3]))
 		.map(r => Array.from(r.cells).map(d => d.innerText))
 		.filter(a => a.length > 1);
@@ -36,23 +31,19 @@ function inject(template) {
 			bankHref: a[0].querySelector('a').href,
 			storeHref: a[1].querySelector('a').href
 		}));
-	const individuals = {
-		headers: Array.from(individualsData[0]).map(e => e.childNodes[0].textContent),
-		content: individualsData
-			.slice(1)
-			.map(e => e.map(f => f.innerText))
-	};
-	const payees = {
-		// headers: cherryPick(Array.from(payeesData[0]).map(e => e.childNodes[0].textContent), [1, 5]),
-		headers: Array.from(payeesData[0])
-			.filter((v, i) => [1, 5].includes(i))
-			.map(e => e.childNodes[0].textContent),
-		content: payeesData
-			.slice(1)
-			.map(e => e
-				.filter((v, i) => [3, 7].includes(i))
-				.map(f => f.innerText))
-	};
+	const individuals = Array.from($('table > tbody tr', $tabs[1]))
+		.map(r => Array.from(r.cells))
+		.slice(1)
+		.map(e => e
+			.filter((v, i) => [0, 1, 3, 4].includes(i))
+			.map(f => f.innerText));
+	const payees = Array.from($('table > tbody tr', $tabs[2]))
+		.slice(1)
+		.map(r => Array.from(r.cells)
+			.filter((v, i) => [3, 7].includes(i))
+			.map(f => f.innerText))
+		.map(n => [n[0].split("\n")[0], n[0].split("\n").pop(), n[1]])
+	;
 	const documents = {
 		headers: documentsData[0],
 		content: documentsData

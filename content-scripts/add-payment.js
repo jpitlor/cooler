@@ -7,8 +7,13 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
 	}
 });
 
+function pad(n) {
+	return n < 10 ? '0' + n : '' + n;
+}
+
 function inject(template) {
-	const todayDate = new Date().toLocaleDateString();
+	const today = new Date();
+	const todayDate = `${today.getFullYear()}-${pad(today.getMonth() + 1)}-${pad(today.getDate())}`;
 
 	$('body > form > table').hide();
 	$('body > form').append(template({todayDate}));
