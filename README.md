@@ -1,3 +1,7 @@
+# This application has been abandoned
+Sadly, not only did I lose access to COOL, but I did not end up finding a way to make some
+of the buttons work. If anyone wants to fork this repo, I'm keeping it up for memory's sake
+
 # COOLer
 A COOL extension. Because COOL sucks.
 
